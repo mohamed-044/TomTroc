@@ -32,5 +32,19 @@
         </div>
     </nav>
     </header>
+
+    <div>
+        <section class="hero-section">
+            <div class="hero-content">
+                <h1 class="title">Rejoignez nos lecteurs passionnés </h1>
+                <p class="description" >Donnez une nouvelle vie à vos livres en les échangeant avec d'autres amoureux de la lecture. Nous croyons en la magie du partage de connaissances et d'histoires à travers les livres. </p>
+                <a href="/TomTroc/views/templates/exchangeBooks.php" class="cta-button ">Découvrir</a>
+            </div>
+            <div class="hero-image">
+                <img id="hero_image" src="/TomTroc/img/hero_image.jpg" alt="Hero Image">
+                <p id="author_image">Hamza</p>
+            </div>            
+        </section>
+    </div>
 </body>
 </html>
