@@ -11,7 +11,7 @@
     <header>
     <nav class="navbar">
         <div class="left-nav">
-            <img src="/TomTroc/img/logo.svg" alt="Logo">
+            <a href="/TomTroc/index.php"><img src="/TomTroc/img/logo.svg" alt="Logo"></a>
             <div class="center-nav">
                 <a href="/TomTroc/index.php" class="navlink">Accueil</a>
                 <a href="/TomTroc/views/templates/exchangeBooks.php" class="navlink">Nos livres à l'échange</a>
@@ -40,7 +40,7 @@
         </div>
         <div class="hero-image">
             <img id="hero_image" src="/TomTroc/img/hero_image.jpg" alt="Hero Image">
-            <p id="author_image">Hamza</p>
+            <p class="author_image">Hamza</p>
         </div>            
     </section>
     <section class="books-section">
@@ -72,6 +72,49 @@
             </div>
         </div>
         <a href="/TomTroc/views/templates/exchangeBooks.php" class="cta-button2">Voir tout les livres</a>
+    </section>
+    <section class="about-section">
+        <h1 class="title2">Comment ça marche ?</h1>
+        <p class="about-description">Échanger des livres avec TomTroc c’est simple et amusant ! Suivez ces étapes pour commencer :</p>
+        <div class="about-content">
+            <div class="card2">
+                <p class="card_description">Inscrivez-vous gratuitement sur notre plateforme.</p>
+            </div>
+            <div class="card2">
+                <p class="card_description">Inscrivez-vous gratuitement sur notre plateforme.</p>
+            </div>
+            <div class="card2">
+                <p class="card_description">Inscrivez-vous gratuitement sur notre plateforme.</p>
+            </div>
+            <div class="card2">
+                <p class="card_description">Inscrivez-vous gratuitement sur notre plateforme.</p>
+            </div>
+        </div>
+        <a href="/TomTroc/views/templates/exchangeBooks.php" class="cta-button3">Voir tout les livres</a>
+    </section>
+    <section>
+        <img class="image" src="/TomTroc/img/section_image.jpg" alt="Section Image">
+    </section>
+    <section class="about-section2">
+        <div class="about-content2">
+            <h1 class="title3">Nos valeurs</h1>
+            <p class="about-description2">Chez Tom Troc, nous mettons l'accent sur le partage, la découverte et la communauté.
+                Nos valeurs sont ancrées dans notre passion pour les livres et notre désir de créer des liens entre les lecteurs.
+                Nous croyons en la puissance des histoires pour rassembler les gens et inspirer des conversations enrichissantes.</p>
+            <p class="about-description2">Notre association a été fondée avec une conviction profonde : chaque livre mérite d'être lu et partagé.</p>
+            <p class="about-description2">Nous sommes passionnés par la création d'une plateforme conviviale qui permet aux lecteurs de se connecter,
+                de partager leurs découvertes littéraires et d'échanger des livres qui attendent patiemment sur les étagères.</p>
+        </div>
+        <div class="bottom-section">
+            <p class="author_image2">L’équipe Tom Troc</p>
+            <img class="heart_image" src="/TomTroc/img/heart.svg" alt="Heart">
+        </div>
+    </section>
+    <section class="footer">
+        <p class="footer-content">Politique de confidentialité</p>
+        <p class="footer-content">Mentions légales</p>
+        <p class="footer-content">Tom Troc©</p>
+        <a href="/TomTroc/index.php"><img id="footer_image" src="/TomTroc/img/footer_image.png" alt="Footer Image"></a>
     </section>
 </body>
 </html>
