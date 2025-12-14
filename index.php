@@ -9,6 +9,7 @@
 </head>
 <body>
     <!-- <?php include 'views/templates/main.php'; ?> -->
-    <?php include 'views/templates/exchangeBooks.php'; ?>
+    <!-- <?php include 'views/templates/exchangeBooks.php'; ?> -->
+     <?php include 'views/templates/detailBook.php'; ?>
 </body>
 </html>
