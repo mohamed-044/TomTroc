@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="/TomTroc/css/styles.css">
 </head>
 <body>
-    <?php include 'views/templates/main.php'; ?>
+    <!-- <?php include 'views/templates/main.php'; ?> -->
+    <?php include 'views/templates/exchangeBooks.php'; ?>
 </body>
 </html>
