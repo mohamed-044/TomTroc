@@ -465,3 +465,211 @@ footer {
    margin-top: 15px;
    margin-bottom: 15px;
 }
+
+.account-link {
+    color: #292929;
+}
+
+.account-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 100px;
+    padding-bottom: 100px;
+    gap: 40px;
+    background-color: #FAF9F7;
+}
+
+.account-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #FFFFFF;
+    max-width: 550px;
+    max-height: 510px;
+    border-radius: 20px;
+    padding-left: 140px;
+    padding-right: 140px;
+    padding-top: 65px;
+    padding-bottom: 65px;
+}
+
+#account_image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+}
+
+.modify-text {
+    font-size: 16px;
+    font-weight: 400;
+    color: #A6A6A6;
+    text-decoration: underline;
+    padding-top: 5px;
+    padding-bottom: 50px;
+}
+
+.account-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    background-color: #FFFFFF;
+    max-width: 550px;
+    max-height: 510px;
+    padding-left: 100px;
+    padding-right: 100px;
+    padding-top: 20px;
+    padding-bottom: 40px;
+    border-radius: 20px;
+}
+
+.account-input {
+    background-color: #EDF2F6;
+}
+
+.infos-section {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 40px;
+}
+
+.account-form {
+    max-width: 320px;
+}
+
+.account-name {
+    font-family: Playfair Display, serif;
+    font-size: 24px;
+    font-weight: 400;
+    color: #292929;
+    padding-top: 25px;
+    margin: 0px;
+}
+
+.account-info {
+    font-size: 14px;
+    font-weight: 400;
+    color: #A6A6A6;
+}
+
+.books-number {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    padding-top: 5px; 
+}
+
+#book-text {
+    margin: 0;
+}
+
+.little-text {
+  font-size: 8px;
+  font-weight: 600;
+  color: #292929;
+  margin: 0px;
+  padding-top: 10px;
+}
+
+.books-section {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    background-color: #FFFFFF;
+    width: 1140px;
+    height: 580px;
+    margin-bottom: 200px;
+}
+
+.table {
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  max-width: 1140px;
+  margin: 0 auto;
+  margin-bottom: 200px;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 120px 1.5fr 1.5fr 1.5fr 1.5fr 1.5fr;
+  align-items: center;
+  padding: 20px 24px;
+  font-size: 8px;
+  color: #292929;
+  font-weight: 600;
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.row.alt {
+  background: #f1f6f9;
+}
+
+.table-header {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background: white;
+}
+
+.photo img {
+  width: 60px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 6px;
+  display: block;
+}
+
+.table-description {
+  font-style: italic;
+  font-weight: 400;
+  max-width: 128px;
+}
+
+.badge {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.available {
+  background: #6fcf97;
+  color: white;
+}
+
+.unavailable {
+  background: #c86c6c;
+  color: white;
+}
+
+.actions {
+  display: flex;
+  gap: 16px;
+}
+
+.actions a {
+  font-size: 14px;
+  color: #292929;
+  text-decoration: underline;
+}
+
+.actions a.delete {
+  color: #ff4d4f;
+}
+
+.title5 {
+    font-family: "Playfair Display", serif;
+    font-size: 26px;
+    font-weight: 400;
+    align-self: flex-start;
+    padding-left: 420px;
+}
