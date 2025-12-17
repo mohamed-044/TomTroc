@@ -754,3 +754,104 @@ footer {
   padding-left: 150px;
   padding-right: 150px;
 }
+
+#edit_book_image {
+  width: 488px;
+  height: 488px;
+  object-fit: cover;
+}
+
+.edit-link {
+  color: #292929;
+  text-decoration: underline;
+  font-size: 12px;
+  font-weight: 400;
+  text-align: end;
+  padding-top: 20px;
+}
+
+.edit-image {
+  display: flex;
+  flex-direction: column;
+}
+
+#title {
+   border: none;
+   outline: none;
+   width: 435px;
+   height: 50px;
+   margin-top: 15px;
+   margin-bottom: 15px;
+}
+
+#author {
+   border: none;
+   outline: none;
+   width: 435px;
+   height: 50px;
+   margin-top: 15px;
+   margin-bottom: 15px;
+}
+
+#description {
+   border: none;
+   outline: none;
+   width: 435px;
+   height: 355px;
+   margin-top: 15px;
+   margin-bottom: 15px;
+   resize: none;
+}
+
+.cta-button6 {
+  background-color: #00AC66;
+  color: #FFFFFF;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  width: 320px;
+  height: 65px;
+  align-content: center;
+  text-align: center;
+}
+
+#disponibility {
+   border: none;
+   outline: none;
+   width: 435px;
+   height: 50px;
+   margin-top: 15px;
+   margin-bottom: 15px;
+   resize: none;
+}
+
+.edit-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  gap: 20px;
+  border-radius: 20px;
+  background-color: #FFFFFF;
+  width: 1140px;
+  height: 940px;
+  padding: 50px;
+}
+
+.edit-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 100px;
+  padding-bottom: 100px;
+  background-color: #FAF9F7;
+}
+
+#book_image {
+  padding-bottom: 10px;
+}
+
+#back{
+  align-self: start;
+  padding-left: 350px;
+}
