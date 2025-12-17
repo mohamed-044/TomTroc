@@ -13,6 +13,7 @@
      <!-- <?php include 'views/templates/detailBook.php'; ?> -->
       <!-- <?php include 'views/templates/connectionForm.php'; ?> -->
         <!-- <?php include 'views/templates/registrationForm.php'; ?> -->
-         <?php include 'views/templates/accountPage.php'; ?>
+         <!-- <?php include 'views/templates/accountPage.php'; ?> -->
+          <?php include 'views/templates/profile.php'; ?>
 </body>
 </html>
