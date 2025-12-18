@@ -15,6 +15,7 @@
         <!-- <?php include 'views/templates/registrationForm.php'; ?> -->
          <!-- <?php include 'views/templates/accountPage.php'; ?> -->
           <!-- <?php include 'views/templates/profile.php'; ?> -->
-              <?php include 'views/templates/editBook.php'; ?>
+              <!-- <?php include 'views/templates/editBook.php'; ?> -->
+                <?php include 'views/templates/messages.php'; ?> 
 </body>
 </html>
