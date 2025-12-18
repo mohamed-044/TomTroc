@@ -17,7 +17,7 @@
                 <a href="/TomTroc/views/templates/accountPage.php" class="navlink">Mon compte</a>
             </div>
             <div>
-                <a href="/TomTroc/views/templates/login.php" class="navlink">Connexion</a>
+                <a href="/TomTroc/views/templates/connectionForm.php" class="navlink">Connexion</a>
             </div>
         </div>
     </nav>

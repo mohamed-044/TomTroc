@@ -1,3 +1,12 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><?php echo $title; ?></title>
+    <link rel="stylesheet" href="/TomTroc/css/styles.css">
+</head>
+<body>
 <?php include __DIR__ . '/header.php'; ?>
 
 <section class="hero-section">
@@ -11,7 +20,7 @@
         <p class="author_image">Hamza</p>
     </div>            
 </section>
-<section class="books-section">
+<section class="books_section">
     <h1 class="title2">Les derniers livres ajoutés</h1>
     <div class="new-books">
         <div class="card">
@@ -79,4 +88,6 @@
     </div>
 </section>
 
-<?php include __DIR__ . '/footer.php'; ?>    
+<?php include __DIR__ . '/footer.php'; ?>
+</body>
+</html>
