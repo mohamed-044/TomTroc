@@ -1,21 +1,9 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TomTruc</title>
-    <link rel="icon" type="image/png" href="img/icon.png">
-    <link rel="stylesheet" href="/TomTroc/css/styles.css">
-</head>
-<body>
-    <!-- <?php include 'views/templates/main.php'; ?> -->
-    <!-- <?php include 'views/templates/exchangeBooks.php'; ?> -->
-     <!-- <?php include 'views/templates/detailBook.php'; ?> -->
-      <!-- <?php include 'views/templates/connectionForm.php'; ?> -->
-        <!-- <?php include 'views/templates/registrationForm.php'; ?> -->
-         <!-- <?php include 'views/templates/accountPage.php'; ?> -->
-          <!-- <?php include 'views/templates/profile.php'; ?> -->
-              <!-- <?php include 'views/templates/editBook.php'; ?> -->
-                <?php include 'views/templates/messages.php'; ?> 
-</body>
-</html>
+<?php
+require_once 'config/config.php';
+require_once 'config/autoload.php';
+error_reporting(E_ALL);
+ini_set("display_errors", 1);
+$bookController = new BookController();
+            $bookController->showHome();
+?>
+
