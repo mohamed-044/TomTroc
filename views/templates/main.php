@@ -13,7 +13,7 @@
     <div class="hero-content">
         <h1 class="title">Rejoignez nos lecteurs passionnés </h1>
         <p class="description" >Donnez une nouvelle vie à vos livres en les échangeant avec d'autres amoureux de la lecture. Nous croyons en la magie du partage de connaissances et d'histoires à travers les livres. </p>
-        <a href="./views/templates/exchangeBooks.php" class="cta-button">Découvrir</a>
+        <a href="index.php?action=books" class="cta-button">Découvrir</a>
     </div>
     <div class="hero-image">
         <img id="hero_image" src="./img/hero_image.jpg" alt="Hero Image">
@@ -48,7 +48,7 @@
             <p class="card_user">Vendu par :</p>
         </div>
     </div>
-    <a href="./views/templates/exchangeBooks.php" class="cta-button2">Voir tout les livres</a>
+    <a href="index.php?action=books" class="cta-button2">Voir tout les livres</a>
 </section>
 <section class="about-section">
     <h1 class="title2">Comment ça marche ?</h1>
@@ -67,7 +67,7 @@
             <p class="card_description">Inscrivez-vous gratuitement sur notre plateforme.</p>
         </div>
     </div>
-    <a href="./views/templates/exchangeBooks.php" class="cta-button3">Voir tout les livres</a>
+    <a href="index.php?action=books" class="cta-button3">Voir tout les livres</a>
 </section>
 <section>
     <img class="image" src="./img/section_image.jpg" alt="Section Image">

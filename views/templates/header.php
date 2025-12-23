@@ -4,7 +4,7 @@
             <a href="index.php"><img src="img/logo.svg" alt="Logo"></a>
             <div class="center-nav">
                 <a href="index.php" class="navlink">Accueil</a>
-                <a href="./views/templates/exchangeBooks.php" class="navlink">Nos livres à l'échange</a>
+                <a href="index.php?action=books" class="navlink">Nos livres à l'échange</a>
             </div>
         </div>
         <div class="right-nav">
