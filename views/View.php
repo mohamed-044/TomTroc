@@ -30,12 +30,13 @@ class View
         // On s'occupe de la vue envoyée
         $viewPath = $this->buildViewPath($viewName);
         
-        // Les deux variables ci-dessous sont utilisées dans le "main.php" qui est le template principal.
-        $content = $this->_renderViewFromTemplate($viewPath, $params);
-        $title = $this->title;
-        ob_start();
-        require(MAIN_VIEW_PATH);
-        echo ob_get_clean();
+        if (file_exists($viewPath)) {
+            extract($params); // On transforme les diverses variables stockées dans le tableau "params" en véritables variables qui pourront être lues dans le template.
+            $title = $this->title;
+            require($viewPath);
+        } else {
+            throw new Exception("La vue '$viewPath' est introuvable.");
+        }
     }
     
     /**
