@@ -23,6 +23,15 @@ try {
             $bookController->showBooks();
             break;
 
+        case 'account':
+            $userController = new UserController();
+            $userController->showAccount();
+            break;    
+
+        case 'login':
+            $userController = new UserController();
+            $userController->showLogin();
+            break;    
         default:
             throw new Exception("La page demandée n'existe pas.");
     }
