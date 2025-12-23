@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $title; ?></title>
-    <link rel="stylesheet" href="/TomTroc/css/styles.css">
+    <link rel="stylesheet" href="./css/styles.css">
 </head>
 <body>
 <?php include __DIR__ . '/header.php'; ?>
@@ -13,10 +13,10 @@
     <div class="hero-content">
         <h1 class="title">Rejoignez nos lecteurs passionnés </h1>
         <p class="description" >Donnez une nouvelle vie à vos livres en les échangeant avec d'autres amoureux de la lecture. Nous croyons en la magie du partage de connaissances et d'histoires à travers les livres. </p>
-        <a href="/TomTroc/views/templates/exchangeBooks.php" class="cta-button">Découvrir</a>
+        <a href="./views/templates/exchangeBooks.php" class="cta-button">Découvrir</a>
     </div>
     <div class="hero-image">
-        <img id="hero_image" src="/TomTroc/img/hero_image.jpg" alt="Hero Image">
+        <img id="hero_image" src="./img/hero_image.jpg" alt="Hero Image">
         <p class="author_image">Hamza</p>
     </div>            
 </section>
@@ -24,31 +24,31 @@
     <h1 class="title2">Les derniers livres ajoutés</h1>
     <div class="new-books">
         <div class="card">
-            <img class="card_image" src="/TomTroc/img/hero_image.jpg" alt="Card Image">
+            <img class="card_image" src="./img/hero_image.jpg" alt="Card Image">
             <p class="card_title">Esther</p>
             <p class="card_author">Alabaster</p>
             <p class="card_user">Vendu par :</p>
         </div>
         <div class="card">
-            <img class="card_image" src="/TomTroc/img/hero_image.jpg" alt="Card Image">
+            <img class="card_image" src="./img/hero_image.jpg" alt="Card Image">
             <p class="card_title">Esther</p>
             <p class="card_author">Alabaster</p>
             <p class="card_user">Vendu par :</p>
         </div>
         <div class="card">
-            <img class="card_image" src="/TomTroc/img/hero_image.jpg" alt="Card Image">
+            <img class="card_image" src="./img/hero_image.jpg" alt="Card Image">
             <p class="card_title">Esther</p>
             <p class="card_author">Alabaster</p>
             <p class="card_user">Vendu par :</p>
         </div>
         <div class="card">
-            <img class="card_image" src="/TomTroc/img/hero_image.jpg" alt="Card Image">
+            <img class="card_image" src="./img/hero_image.jpg" alt="Card Image">
             <p class="card_title">Esther</p>
             <p class="card_author">Alabaster</p>
             <p class="card_user">Vendu par :</p>
         </div>
     </div>
-    <a href="/TomTroc/views/templates/exchangeBooks.php" class="cta-button2">Voir tout les livres</a>
+    <a href="./views/templates/exchangeBooks.php" class="cta-button2">Voir tout les livres</a>
 </section>
 <section class="about-section">
     <h1 class="title2">Comment ça marche ?</h1>
@@ -67,10 +67,10 @@
             <p class="card_description">Inscrivez-vous gratuitement sur notre plateforme.</p>
         </div>
     </div>
-    <a href="/TomTroc/views/templates/exchangeBooks.php" class="cta-button3">Voir tout les livres</a>
+    <a href="./views/templates/exchangeBooks.php" class="cta-button3">Voir tout les livres</a>
 </section>
 <section>
-    <img class="image" src="/TomTroc/img/section_image.jpg" alt="Section Image">
+    <img class="image" src="./img/section_image.jpg" alt="Section Image">
 </section>
 <section class="about-section2">
     <div class="about-content2">
@@ -84,7 +84,7 @@
     </div>
     <div class="bottom-section">
         <p class="author_image2">L’équipe Tom Troc</p>
-        <img class="heart_image" src="/TomTroc/img/heart.svg" alt="Heart">
+        <img class="heart_image" src="./img/heart.svg" alt="Heart">
     </div>
 </section>
 

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $title ?? 'Mon Compte'; ?></title>
-    <link rel="stylesheet" href="/TomTroc/css/styles.css">
+    <link rel="stylesheet" href="./css/styles.css">
 </head>
 <body>
 <?php include __DIR__ . '/header.php'; ?>
@@ -13,18 +13,18 @@
     <h1 class="title5">Mon Compte</h1>
     <div class="infos-section">
         <div class="account-content">
-            <img id="account_image" src="/TomTroc/img/section_image.jpg" alt="Account Image">
+            <img id="account_image" src="./img/section_image.jpg" alt="Account Image">
             <a class="modify-text">modifier</a>
-            <img src="/TomTroc/img/line2.png" alt="Line Image">
+            <img src="./img/line2.png" alt="Line Image">
             <p class="account-name">nathalire</p>
             <p class="account-info">Membre depuis 1 ans</p>
             <p class="little-text">BIBLIOTHEQUE</p>
-            <div class="books-number"><img src="/TomTroc/img/books_icon.svg" alt="Books Icon"><p id="book-text">4 Livres</p></div>
+            <div class="books-number"><img src="./img/books_icon.svg" alt="Books Icon"><p id="book-text">4 Livres</p></div>
 
         </div>
         <div class="account-actions">
             <p class="account-link">Vos informations personnelles</p>
-            <form class="account-form" action="/TomTroc/index.php" method="post">
+            <form class="account-form" action="index.php" method="post">
 
             <label class="author" for="email">Adresse e-mail</label>
             <input type="email" id="email" name="email" class="account-input" required>

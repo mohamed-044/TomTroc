@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $title ?? 'Messagerie'; ?></title>
-    <link rel="stylesheet" href="/TomTroc/css/styles.css">
+    <link rel="stylesheet" href="./css/styles.css">
 </head>
 <body>
 <?php include __DIR__ . '/header.php'; ?>
@@ -13,7 +13,7 @@
     <div class="messages-preview">
         <h1 class="title6">Messagerie</h1>
         <div class="open-message-card">
-            <img src="/TomTroc/img/section_image.jpg" alt="Account Image" id="message-avatar">
+            <img src="./img/section_image.jpg" alt="Account Image" id="message-avatar">
             <div class="new-messages">
             <div class="message-header">
             <h2 class="message-sender">Alexlecture</h2>
@@ -23,7 +23,7 @@
             </div>
         </div>
         <div class="message-card">
-            <img src="/TomTroc/img/section_image.jpg" alt="Account Image" id="message-avatar">
+            <img src="./img/section_image.jpg" alt="Account Image" id="message-avatar">
             <div class="new-messages">
             <div class="message-header">
             <h2 class="message-sender">Alexlecture</h2>
@@ -35,7 +35,7 @@
     </div>
 <div class="message-content">
     <div class="message-header-content">
-        <img src="/TomTroc/img/section_image.jpg" alt="Account Image" id="message-avatar-large">
+        <img src="./img/section_image.jpg" alt="Account Image" id="message-avatar-large">
         <h2 class="message-sender-large">Alexlecture</h2>
     </div>
     <div class="message-body">
@@ -46,14 +46,14 @@
             </div>
         </div>
         <div class="message-container received-message-container">
-            <img src="/TomTroc/img/section_image.jpg" alt="Account Image" id="received-message-avatar">
+            <img src="./img/section_image.jpg" alt="Account Image" id="received-message-avatar">
             <span class="received-message-time">21.08 15:50</span>
             <div class="message received-message">
                 <p class="message-text">Lorem ipsum dolor sit amet, consectetur .adipiscing elit, sed do eiusmod tempor </p>
             </div>
         </div>
     </div>
-    <form class="message-input-form" action="/TomTroc/index.php" method="post">
+    <form class="message-input-form" action="./index.php" method="post">
         <input type="text" id="message-input" name="message-input" placeholder="Tapez votre message ici" required>
         <button type="submit" class="cta-button7">Envoyer</button>
     </form>

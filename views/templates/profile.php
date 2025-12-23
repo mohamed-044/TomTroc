@@ -4,19 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $title ?? 'Profil'; ?></title>
-    <link rel="stylesheet" href="/TomTroc/css/styles.css">
+    <link rel="stylesheet" href="./css/styles.css">
 </head>
 <body>
 <?php include __DIR__ . '/header.php'; ?>
 <section class="account-section2">
 <div class="account-content2">
-            <img id="account_image" src="/TomTroc/img/section_image.jpg" alt="Account Image">
+            <img id="account_image" src="./img/section_image.jpg" alt="Account Image">
             <a class="modify-text">modifier</a>
-            <img src="/TomTroc/img/line2.png" alt="Line Image">
+            <img src="./img/line2.png" alt="Line Image">
             <p class="account-name">nathalire</p>
             <p class="account-info">Membre depuis 1 ans</p>
             <p class="little-text">BIBLIOTHEQUE</p>
-            <div class="books-number"><img src="/TomTroc/img/books_icon.svg" alt="Books Icon"><p id="book-text">4 Livres</p></div>
+            <div class="books-number"><img src="./img/books_icon.svg" alt="Books Icon"><p id="book-text">4 Livres</p></div>
             <button type="submit" class="cta-button5">Ecrire un message</button>
 </div>
 
@@ -30,7 +30,7 @@
 
   <div class="row2">
     <div class="photo">
-      <img src="/TomTroc/img/section_image.jpg" alt="Livre">
+      <img src="./img/section_image.jpg" alt="Livre">
     </div>
     <div>The Kinfolk Table</div>
     <div>Nathan Williams</div>
@@ -41,7 +41,7 @@
 
   <div class="row2 alt">
     <div class="photo">
-      <img src="/TomTroc/img/section_image.jpg" alt="Livre">
+      <img src="./img/section_image.jpg" alt="Livre">
     </div>
     <div>The Kinfolk Table</div>
     <div>Nathan Williams</div>
