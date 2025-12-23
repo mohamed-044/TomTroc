@@ -15,4 +15,17 @@ public static function redirect(string $action, array $params = []) : void
         header("Location: $url");
         exit();
     }
+
+    /**
+     * Cette méthode permet de récupérer une variable de la superglobale $_REQUEST.
+     * Si cette variable n'est pas définie, on retourne la valeur null (par défaut)
+     * ou celle qui est passée en paramètre si elle existe.
+     * @param string $variableName : le nom de la variable à récupérer.
+     * @param mixed $defaultValue : la valeur par défaut si la variable n'est pas définie.
+     * @return mixed : la valeur de la variable ou la valeur par défaut.
+     */
+    public static function request(string $variableName, mixed $defaultValue = null) : mixed
+    {
+        return $_REQUEST[$variableName] ?? $defaultValue;
+    }
 }
