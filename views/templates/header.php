@@ -14,10 +14,10 @@
             </div>
             <div>
                 <img src="./img/icon_account.svg" alt="Compte">
-                <a href="./views/templates/accountPage.php" class="navlink">Mon compte</a>
+                <a href="index.php?action=account" class="navlink">Mon compte</a>
             </div>
             <div>
-                <a href="./views/templates/connectionForm.php" class="navlink">Connexion</a>
+                <a href="index.php?action=login" class="navlink">Connexion</a>
             </div>
         </div>
     </nav>
