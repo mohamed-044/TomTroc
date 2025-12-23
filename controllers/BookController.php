@@ -14,5 +14,13 @@ class BookController
         $view = new View("Accueil");
         $view->render("main", ['books' => $books]);
     }
+    public function showBooks() : void
+    {
+        $bookManager = new BookManager();
+        $books = $bookManager->getAllBooks();
+
+        $view = new View("Livres à l'échange");
+        $view->render("exchangeBooks", ['books' => $books]);
+    }
 
  }
