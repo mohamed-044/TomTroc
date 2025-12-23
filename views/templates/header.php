@@ -10,7 +10,7 @@
         <div class="right-nav">
             <div>
                 <img src="./img/icon_messagerie.svg" alt="Messagerie">
-                <a href="./views/templates/messages.php" class="navlink">Messagerie</a>
+                <a href="index.php?action=messages" class="navlink">Messagerie</a>
             </div>
             <div>
                 <img src="./img/icon_account.svg" alt="Compte">
