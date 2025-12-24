@@ -10,16 +10,16 @@ class BookManager extends AbstractEntityManager
      * @return array : un tableau d'objets Book.
      */
     public function getAllBooks() : array
-    {
-        $sql = "SELECT * FROM book";
-        $result = $this->db->query($sql);
-        $books = [];
+{
+    $sql = "SELECT book.*, user.name AS user_name FROM book JOIN user ON book.user_id = user.id";
+    $result = $this->db->query($sql);
+    $books = [];
 
-        while ($book = $result->fetch()) {
-            $books[] = new Book($book);
-        }
-        return $books;
+    while ($book = $result->fetch()) {
+        $books[] = new Book($book);
     }
+    return $books;
+}
     
     /**
      * Récupère un livre par son id.
