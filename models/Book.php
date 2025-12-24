@@ -6,12 +6,13 @@
  */
  class Book extends AbstactEntity 
  {
-    private int $idUser;
+    private int $idUser = 0;
     private string $title = "";
     private string $author = "";
     private string $status = "";
     private string $description = "";
     private string $image = "";
+    private string $userName = "";
 
     /**
      * Setter pour l'id de l'utilisateur. 
@@ -119,5 +120,23 @@
     public function getImage() : string 
     {
         return $this->image;
+    }
+
+    /**
+     * Setter pour le nom d'utilisateur.
+     * @param string $userName
+     */
+    public function setUserName(string $userName) : void 
+    {
+        $this->userName = $userName;
+    }
+
+    /**
+     * Getter pour le nom d'utilisateur.
+     * @return string
+     */
+    public function getUserName() : string 
+    {
+        return $this->userName;
     }
 }
