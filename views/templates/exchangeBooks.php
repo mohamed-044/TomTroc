@@ -19,29 +19,17 @@
         </div>
     </div>
     <div class="new-books">
-        <div class="card">
-            <img class="card_image" src="./img/hero_image.jpg" alt="Card Image">
-            <p class="card_title">Esther</p>
-            <p class="card_author">Alabaster</p>
-            <p class="card_user">Proposé par :</p>
-        </div>
-        <div class="card">
-            <img class="card_image" src="./img/hero_image.jpg" alt="Card Image">
-            <p class="card_title">Esther</p>
-            <p class="card_author">Alabaster</p>
-            <p class="card_user">Proposé par :</p>
-        </div>
-        <div class="card">
-            <img class="card_image" src="./img/hero_image.jpg" alt="Card Image">
-            <p class="card_title">Esther</p>
-            <p class="card_author">Alabaster</p>
-            <p class="card_user">Proposé par :</p>
-        </div>
-        <div class="card">
-            <img class="card_image" src="./img/hero_image.jpg" alt="Card Image">
-            <p class="card_title">Esther</p>    
-            <p class="card_author">Alabaster</p>
-            <p class="card_user">Proposé par :</p>
+        <?php
+        $books = $books ?? [];
+        // Remove debug after testing: echo '<pre>'; print_r($books); echo '</pre>';
+        foreach ($books as $book): ?>
+    <div class="card">
+        <img class="card_image" src="./img/<?php echo htmlspecialchars($book->getImage() ?? 'hero_image.jpg'); ?>" alt="Card Image">
+        <p class="card_title"><?php echo htmlspecialchars($book->getTitle() ?? 'Titre inconnu'); ?></p>
+        <p class="card_author"><?php echo htmlspecialchars($book->getAuthor() ?? 'Auteur inconnu'); ?></p>
+        <p class="card_user">Proposé par : <?php echo htmlspecialchars($book->getUserName() ?? 'Utilisateur inconnu'); ?></p> 
+    </div>
+    <?php endforeach; ?>
         </div>
     </div>
 
