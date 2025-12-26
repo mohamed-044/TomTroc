@@ -12,7 +12,7 @@ class UserController
         $this->checkIfUserIsConnected();
         
         $userManager = new UserManager();
-        $user = $userManager->getUserByLogin('User');
+        $user = $userManager->getUserById($_SESSION['user_id']);
 
         $view = new View("Compte");
         $view->render("accountPage", ['user' => $user]);
@@ -35,7 +35,7 @@ class UserController
     private function checkIfUserIsConnected() : void
     {
         // On vérifie que l'utilisateur est connecté.
-        if (!isset($_SESSION['user'])) {
+        if (!isset($_SESSION['user_id'])) {
             Utils::redirect("login");
         }
     }
@@ -79,8 +79,7 @@ class UserController
             }
 
             // On connecte l'utilisateur.
-            $_SESSION['user'] = $user;
-            $_SESSION['idUser'] = $user->getId();
+            $_SESSION['user_id'] = $user->getId();
 
             // On redirige vers la page de profil.
             Utils::redirect("account");
@@ -97,10 +96,23 @@ class UserController
     public function disconnectUser() : void 
     {
         // On déconnecte l'utilisateur.
-        unset($_SESSION['user']);
+        unset($_SESSION['user_id']);
 
         // On redirige vers la page d'accueil.
         Utils::redirect("home");
     }
 
+    /**
+     * Image de l'utilisateur.
+     * @return void
+     */
+    public function uploadUserImage() : void 
+    {
+        // Code pour télécharger et enregistrer l'image de l'utilisateur.
+        $userManager = new UserManager();
+        $user = $userManager->getUserByLogin($_SESSION['user']);
+        $user->setImage($_FILES['image']['name']);
+        $userManager->updateUser($user);
+        Utils::redirect("account");
+    }
 }
