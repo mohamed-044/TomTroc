@@ -37,6 +37,12 @@ try {
             $messageController = new MessageController();
             $messageController->showMessages();
             break;    
+
+        case 'connectUser': 
+        $userController = new UserController();
+        $userController->connectUser();
+        break;
+
         default:
             throw new Exception("La page demandée n'existe pas.");
     }
