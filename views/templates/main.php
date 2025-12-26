@@ -23,30 +23,16 @@
 <section class="books_section">
     <h1 class="title2">Les derniers livres ajoutés</h1>
     <div class="new-books">
+        <?php
+        $books = $books ?? [];
+        foreach ($books as $book): ?>
         <div class="card">
-            <img class="card_image" src="./img/hero_image.jpg" alt="Card Image">
-            <p class="card_title">Esther</p>
-            <p class="card_author">Alabaster</p>
-            <p class="card_user">Vendu par :</p>
+            <img class="card_image" src="./img/<?php echo htmlspecialchars($book->getImage() ?? 'hero_image.jpg'); ?>" alt="Card Image">
+            <p class="card_title"><?php echo htmlspecialchars($book->getTitle() ?? 'Titre inconnu'); ?></p>
+            <p class="card_author"><?php echo htmlspecialchars($book->getAuthor() ?? 'Auteur inconnu'); ?></p>
+            <p class="card_user">Proposé par : <?php echo htmlspecialchars($book->getUserName() ?? 'Utilisateur inconnu'); ?></p> 
         </div>
-        <div class="card">
-            <img class="card_image" src="./img/hero_image.jpg" alt="Card Image">
-            <p class="card_title">Esther</p>
-            <p class="card_author">Alabaster</p>
-            <p class="card_user">Vendu par :</p>
-        </div>
-        <div class="card">
-            <img class="card_image" src="./img/hero_image.jpg" alt="Card Image">
-            <p class="card_title">Esther</p>
-            <p class="card_author">Alabaster</p>
-            <p class="card_user">Vendu par :</p>
-        </div>
-        <div class="card">
-            <img class="card_image" src="./img/hero_image.jpg" alt="Card Image">
-            <p class="card_title">Esther</p>
-            <p class="card_author">Alabaster</p>
-            <p class="card_user">Vendu par :</p>
-        </div>
+        <?php endforeach; ?>
     </div>
     <a href="index.php?action=books" class="cta-button2">Voir tout les livres</a>
 </section>
@@ -58,13 +44,13 @@
             <p class="card_description">Inscrivez-vous gratuitement sur notre plateforme.</p>
         </div>
         <div class="card2">
-            <p class="card_description">Inscrivez-vous gratuitement sur notre plateforme.</p>
+            <p class="card_description">Ajoutez les livres que vous souhaitez échanger à votre profil.</p>
         </div>
         <div class="card2">
-            <p class="card_description">Inscrivez-vous gratuitement sur notre plateforme.</p>
+            <p class="card_description">Parcourez les livres disponibles chez d'autres membres.</p>
         </div>
         <div class="card2">
-            <p class="card_description">Inscrivez-vous gratuitement sur notre plateforme.</p>
+            <p class="card_description">Proposez un échange et discutez avec d'autres passionnés de lecture.</p>
         </div>
     </div>
     <a href="index.php?action=books" class="cta-button3">Voir tout les livres</a>
