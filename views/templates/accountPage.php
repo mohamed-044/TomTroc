@@ -11,12 +11,13 @@
 
 <section class="account-section">
     <h1 class="title5">Mon Compte</h1>
+    <?php if (isset($user)): ?>
     <div class="infos-section">
         <div class="account-content">
-            <img id="account_image" src="./img/section_image.jpg" alt="Account Image">
+            <img id="account_image" src="./img/<?php echo htmlspecialchars($user->getImage() ?: 'section_image.jpg'); ?>" alt="Account Image">
             <a class="modify-text">modifier</a>
             <img src="./img/line2.png" alt="Line Image">
-            <p class="account-name">nathalire</p>
+            <p class="account-name"><?php echo htmlspecialchars($user->getName() ?? 'Utilisateur'); ?></p>
             <p class="account-info">Membre depuis 1 ans</p>
             <p class="little-text">BIBLIOTHEQUE</p>
             <div class="books-number"><img src="./img/books_icon.svg" alt="Books Icon"><p id="book-text">4 Livres</p></div>
@@ -40,6 +41,7 @@
         </div>
     </div>
 </section>
+<?php endif; ?>
 <section class="table">
   <div class="row table-header">
     <div>Photo</div>
