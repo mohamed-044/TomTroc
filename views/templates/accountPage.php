@@ -26,8 +26,8 @@
             <p class="account-link">Vos informations personnelles</p>
             <form class="account-form" action="index.php" method="post">
 
-            <label class="author" for="email">Adresse e-mail</label>
-            <input type="email" id="email" name="email" class="account-input" required>
+            <label class="author" for="login">Adresse e-mail</label>
+            <input type="login" id="login" name="login" class="account-input" required>
 
             <label class="author" for="password">Mot de passe</label>
             <input type="password" id="password" name="password" class="account-input" required>
