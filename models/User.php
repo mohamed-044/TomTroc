@@ -5,9 +5,22 @@
  */ 
 class User extends AbstactEntity 
 {
-    private string $login;
-    private string $password;
-    private string $name;
+    private string $login = "";
+    private string $password = "";
+    private string $name = "";
+    private string $image = "";
+
+    /**
+     * Constructor to initialize from DB data.
+     * @param array $data : associative array from DB fetch.
+     */
+    public function __construct(array $data = []) {
+        $this->id = (int) ($data['id'] ?? -1);
+        $this->setLogin($data['login'] ?? '');
+        $this->setPassword($data['password'] ?? '');
+        $this->setName($data['name'] ?? '');
+        $this->setImage($data['image'] ?? '');
+    }
 
     /**
      * Setter pour le login.
@@ -61,5 +74,23 @@ class User extends AbstactEntity
     public function getName() : string 
     {
         return $this->name;
+    }
+
+    /**
+     * Setter pour l'image.
+     * @param string $image
+     */
+    public function setImage(string $image) : void 
+    {
+        $this->image = $image;
+    }    
+
+    /**
+     * Getter pour l'image.
+     * @return string
+     */
+    public function getImage() : string 
+    {
+        return $this->image;
     }
 }
