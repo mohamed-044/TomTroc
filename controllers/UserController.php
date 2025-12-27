@@ -115,4 +115,55 @@ class UserController
         $userManager->updateUser($user);
         Utils::redirect("account");
     }
+
+    /**
+     * Affichage du formulaire d'inscription.
+     * @return void
+     */
+    public function showRegisterForm() : void 
+    {
+        $view = new View("Inscription");
+        $view->render("registrationForm");
+    }
+
+    /**
+     * Enregistrement d'un nouvel utilisateur.
+     * @return void
+     */
+    public function registerUser() : void 
+    {
+        try {
+            // On récupère les données du formulaire.
+            $login = Utils::request("login");
+            $password = Utils::request("password");
+            $name = Utils::request("name");
+
+            // On vérifie que les données sont valides.
+            if (empty($login) || empty($password) || empty($name)) {
+                throw new Exception("Tous les champs sont obligatoires.");
+            }
+
+            // On vérifie que l'utilisateur n'existe pas déjà.
+            $userManager = new UserManager();
+            $existingUser = $userManager->getUserByLogin($login);
+            if ($existingUser) {
+                throw new Exception("Ce login est déjà utilisé.");
+            }
+
+            // On crée le nouvel utilisateur.
+            $newUser = new User([
+                'login' => $login,
+                'password' => $password,
+                'name' => $name
+            ]);
+            // Code pour enregistrer le nouvel utilisateur dans la base de données.
+            $userManager->createUser($newUser);
+
+            // On redirige vers la page de connexion.
+            Utils::redirect("login");
+        } catch (Exception $e) {
+            echo 'Error: ' . $e->getMessage(); // Temporary debug
+            exit;
+        }
+    }
 }
