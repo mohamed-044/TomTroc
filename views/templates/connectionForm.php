@@ -21,7 +21,7 @@
 
             <button type="submit" class="cta-button">Se connecter</button>
         </form>
-        <p class="signup-text">Pas encore de compte ? <a class="signup-link" href="./views/templates/registrationForm.php">Inscrivez-vous</a></p>
+        <p class="signup-text">Pas encore de compte ? <a class="signup-link" href="index.php?action=register">Inscrivez-vous</a></p>
     </div>
     <img id="connect_image" src="./img/hero_image.jpg" alt="Hero Image">
 </section>

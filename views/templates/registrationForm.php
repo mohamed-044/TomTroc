@@ -12,19 +12,19 @@
 <section class="connect-section">
     <div class="connect-content">
         <h1 class="title">Inscription</h1>
-        <form class="connection-form" action="./index.php" method="post">
-            <label class="author" for="pseudo">Pseudo</label>
-            <input type="text" id="pseudo" name="pseudo" required>
+        <form class="connection-form" action="index.php?action=registerUser" method="post">
+            <label class="author" for="name">Pseudo</label>
+            <input type="text" id="name" name="name" required>
 
-            <label class="author" for="email">Adresse e-mail</label>
-            <input type="email" id="email" name="email" required>
+            <label class="author" for="login">Adresse e-mail</label>
+            <input type="text" id="login" name="login" required>
 
             <label class="author" for="password">Mot de passe</label>
             <input type="password" id="password" name="password" required>
 
             <button type="submit" class="cta-button">S'inscrire</button>
         </form>
-        <p class="signup-text">Déjà inscrit ? <a class="signup-link" href="./views/templates/connectionForm.php">Connectez-vous</a></p>
+        <p class="signup-text">Déjà inscrit ? <a class="signup-link" href="index.php?action=login">Connectez-vous</a></p>
     </div>
     <img id="connect_image" src="./img/hero_image.jpg" alt="Hero Image">
 </section>

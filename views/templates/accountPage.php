@@ -33,8 +33,8 @@
             <label class="author" for="password">Mot de passe</label>
             <input type="password" id="password" name="password" class="account-input" required>
 
-            <label class="author" for="pseudo">Pseudo</label>
-            <input type="text" id="pseudo" name="pseudo" class="account-input" required>
+            <label class="author" for="name">Pseudo</label>
+            <input type="text" id="name" name="name" class="account-input" required>
 
             <button type="submit" class="cta-button3">Enregistrer</button>
             </form>
