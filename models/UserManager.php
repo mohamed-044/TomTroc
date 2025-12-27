@@ -54,4 +54,14 @@ class UserManager extends AbstractEntityManager
             'id' => $user->getId()
         ]);
     }
+
+    public function createUser(User $user) : void 
+    {
+        $sql = "INSERT INTO user (login, password, name) VALUES (:login, :password, :name)";
+        $this->db->query($sql, [
+            'login' => $user->getLogin(),
+            'password' => $user->getPassword(),
+            'name' => $user->getName(),
+        ]);
+    }
 }
