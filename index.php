@@ -39,9 +39,19 @@ try {
             break;    
 
         case 'connectUser': 
-        $userController = new UserController();
-        $userController->connectUser();
-        break;
+            $userController = new UserController();
+            $userController->connectUser();
+            break;
+
+        case 'register': 
+            $userController = new UserController();
+            $userController->showRegisterForm();
+            break;
+
+        case 'registerUser': 
+            $userController = new UserController();
+            $userController->registerUser();
+            break;
 
         default:
             throw new Exception("La page demandée n'existe pas.");
