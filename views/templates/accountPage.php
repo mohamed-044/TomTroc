@@ -18,7 +18,7 @@
             <a class="modify-text" href="index.php?action=updateImage">modifier</a>
             <img src="./img/line2.png" alt="Line Image">
             <p class="account-name"><?php echo htmlspecialchars($user->getName() ?? 'Utilisateur'); ?></p>
-            <p class="account-info">Membre depuis 1 ans</p>
+            <p class="account-info">Membre depuis <?php echo $user->getJoinDate() ?? 'Inconnue'; ?> ans</p>
             <p class="little-text">BIBLIOTHEQUE</p>
             <div class="books-number"><img src="./img/books_icon.svg" alt="Books Icon"><p id="book-text"><?php echo count($books); ?> Livres</p></div>
 
