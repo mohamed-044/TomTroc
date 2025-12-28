@@ -15,7 +15,7 @@
     <div class="infos-section">
         <div class="account-content">
             <img id="account_image" src="./img/<?php echo htmlspecialchars($user->getImage() ?: 'section_image.jpg'); ?>" alt="Account Image">
-            <a class="modify-text">modifier</a>
+            <a class="modify-text" href="index.php?action=updateImage">modifier</a>
             <img src="./img/line2.png" alt="Line Image">
             <p class="account-name"><?php echo htmlspecialchars($user->getName() ?? 'Utilisateur'); ?></p>
             <p class="account-info">Membre depuis 1 ans</p>
@@ -25,7 +25,7 @@
         </div>
         <div class="account-actions">
             <p class="account-link">Vos informations personnelles</p>
-            <form class="account-form" action="index.php" method="post">
+            <form class="account-form" action="index.php?action=updateAccount" method="post">
 
             <label class="author" for="login">Adresse e-mail</label>
             <input type="login" id="login" name="login" class="account-input" required>
