@@ -53,6 +53,16 @@ try {
             $userController->registerUser();
             break;
 
+        case 'updateAccount': 
+            $userController = new UserController();
+            $userController->updateAccount();
+            break;
+
+        case 'updateImage': 
+            $userController = new UserController();
+            $userController->uploadUserImage();
+            break;
+
         default:
             throw new Exception("La page demandée n'existe pas.");
     }
