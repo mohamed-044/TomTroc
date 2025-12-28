@@ -28,13 +28,17 @@
             <form class="account-form" action="index.php?action=updateAccount" method="post">
 
             <label class="author" for="login">Adresse e-mail</label>
-            <input type="login" id="login" name="login" class="account-input" required>
+            <input type="text" id="login" name="login" class="account-input"
+                  value="<?= htmlspecialchars($user->getLogin()) ?>" required>
 
             <label class="author" for="password">Mot de passe</label>
-            <input type="password" id="password" name="password" class="account-input" required>
+            <input type="password" id="password" name="password" class="account-input"
+                  value="<?= htmlspecialchars($user->getPassword()) ?>" required>
 
             <label class="author" for="name">Pseudo</label>
-            <input type="text" id="name" name="name" class="account-input" required>
+            <input type="text" id="name" name="name" class="account-input"
+                  value="<?= htmlspecialchars($user->getName()) ?>" required>
+
 
             <button type="submit" class="cta-button3">Enregistrer</button>
             </form>
@@ -52,41 +56,43 @@
     <div>Action</div>
   </div>
 
-  <div class="row">
-    <div class="photo">
-      <img src="/TomTroc/img/section_image.jpg" alt="Livre">
-    </div>
-    <div>The Kinfolk Table</div>
-    <div>Nathan Williams</div>
-    <div class="table-description">
-      J'ai récemment plongé dans les pages de "The Kinfolk Table" et j'ai été enchanté p...
-    </div>
-    <div>
-      <span class="badge available">disponible</span>
-    </div>
-    <div class="actions">
-      <a href="#">Éditer</a>
-      <a href="#" class="delete">Supprimer</a>
-    </div>
-  </div>
+  <?php foreach ($books as $book): ?>
 
-  <div class="row alt">
-    <div class="photo">
-      <img src="/TomTroc/img/section_image.jpg" alt="Livre">
+    <?php 
+
+        $rowClass = ($book->getStatus() === 'true') ? 'row' : 'row alt';
+    ?>
+
+    <div class="<?= $rowClass ?>">
+        <div class="photo">
+            <img src="./img/<?= htmlspecialchars($book->getImage()) ?>" alt="Livre">
+        </div>
+
+        <div><?= htmlspecialchars($book->getTitle()) ?></div>
+
+        <div><?= htmlspecialchars($book->getAuthor()) ?></div>
+
+        <div class="table-description">
+            <?= htmlspecialchars(substr($book->getDescription(), 0, 100)) ?>...
+        </div>
+
+        <div>
+            <?php if ($book->getStatus() === 'true'): ?>
+                <span class="badge available">disponible</span>
+            <?php else: ?>
+                <span class="badge unavailable">indisponible</span>
+            <?php endif; ?>
+        </div>
+
+        <div class="actions">
+            <a href="#">Éditer</a>
+            <a href="#" class="delete">Supprimer</a>
+        </div>
     </div>
-    <div>The Kinfolk Table</div>
-    <div>Nathan Williams</div>
-    <div class="table-description">
-      J'ai récemment plongé dans les pages de "The Kinfolk Table" et j'ai été enchanté p...
-    </div>
-    <div>
-      <span class="badge unavailable">non dispo.</span>
-    </div>
-    <div class="actions">
-      <a href="#">Éditer</a>
-      <a href="#" class="delete">Supprimer</a>
-    </div>
-  </div>
+
+<?php endforeach; ?>
+
+
 </section>
 
 <?php include __DIR__ . '/footer.php'; ?>
