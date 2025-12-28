@@ -9,6 +9,7 @@ class User extends AbstactEntity
     private string $password = "";
     private string $name = "";
     private string $image = "";
+    private dateTime $dateCreated;
 
     /**
      * Constructor to initialize from DB data.
@@ -20,6 +21,7 @@ class User extends AbstactEntity
         $this->setPassword($data['password'] ?? '');
         $this->setName($data['name'] ?? '');
         $this->setImage($data['image'] ?? '');
+        $this->dateCreated = isset($data['date_created']) ? new DateTime($data['date_created']) : new DateTime();
     }
 
     /**
@@ -92,5 +94,16 @@ class User extends AbstactEntity
     public function getImage() : string 
     {
         return $this->image;
+    }
+
+    /**
+     * Getter pour la date d'inscription en années.
+     * @return ?string
+     */
+    public function getJoinDate() : ?string 
+    {
+        $now = new DateTime();
+        $interval = $now->diff($this->dateCreated);
+        return $interval->y ? (string)$interval->y : null;
     }
 }
