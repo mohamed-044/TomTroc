@@ -55,6 +55,11 @@ class UserManager extends AbstractEntityManager
         ]);
     }
 
+    /**
+     * Crée un nouvel user.
+     * @param User $user
+     * @return void
+     */
     public function createUser(User $user) : void 
     {
         $sql = "INSERT INTO user (login, password, name) VALUES (:login, :password, :name)";
@@ -64,4 +69,20 @@ class UserManager extends AbstractEntityManager
             'name' => $user->getName(),
         ]);
     }
+    
+    /**
+     * Met à jour l'image de profil d'un user.
+     * @param int $userId
+     * @param string $imagePath
+     * @return void
+     */
+    public function updateUserImage(int $userId, string $imagePath) : void 
+    {
+        $sql = "UPDATE user SET image = :image WHERE id = :id";
+        $this->db->query($sql, [
+            'image' => $imagePath,
+            'id' => $userId
+        ]);
+    }
+
 }
