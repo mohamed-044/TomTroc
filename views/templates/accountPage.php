@@ -20,7 +20,7 @@
             <p class="account-name"><?php echo htmlspecialchars($user->getName() ?? 'Utilisateur'); ?></p>
             <p class="account-info">Membre depuis 1 ans</p>
             <p class="little-text">BIBLIOTHEQUE</p>
-            <div class="books-number"><img src="./img/books_icon.svg" alt="Books Icon"><p id="book-text">4 Livres</p></div>
+            <div class="books-number"><img src="./img/books_icon.svg" alt="Books Icon"><p id="book-text"><?php echo count($books); ?> Livres</p></div>
 
         </div>
         <div class="account-actions">
