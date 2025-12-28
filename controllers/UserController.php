@@ -108,12 +108,34 @@ class UserController
      */
     public function uploadUserImage() : void 
     {
-        // Code pour télécharger et enregistrer l'image de l'utilisateur.
-        $userManager = new UserManager();
-        $user = $userManager->getUserByLogin($_SESSION['user']);
-        $user->setImage($_FILES['image']['name']);
-        $userManager->updateUser($user);
-        Utils::redirect("account");
+        // On vérifie que l'utilisateur est connecté.
+        $this->checkIfUserIsConnected();
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            // Code pour télécharger et enregistrer l'image de l'utilisateur.
+            $userManager = new UserManager();
+            $user = $userManager->getUserById($_SESSION['user_id']);
+
+            if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
+                $imageName = $_FILES['image']['name'];
+                $tmpName = $_FILES['image']['tmp_name'];
+                $destination = './img/' . $imageName;
+                if (move_uploaded_file($tmpName, $destination)) {
+                    $user->setImage($imageName);
+                    $userManager->updateUser($user);
+                } else {
+                    throw new Exception("Erreur lors du téléchargement de l'image.");
+                }
+            } else {
+                throw new Exception("Aucune image valide n'a été téléchargée.");
+            }
+
+            Utils::redirect("account");
+        } else {
+            // Afficher le formulaire de téléchargement d'image.
+            $view = new View("Modifier l'image");
+            $view->render("updateImageForm");
+        }
     }
 
     /**
@@ -164,6 +186,48 @@ class UserController
         } catch (Exception $e) {
             echo 'Error: ' . $e->getMessage(); // Temporary debug
             exit;
+        }
+    }
+
+    public function updateAccount() : void 
+    {
+        try {
+            // On vérifie que l'utilisateur est connecté.
+            $this->checkIfUserIsConnected();
+
+            // On récupère les données du formulaire.
+            $login = Utils::request("login");
+            $password = Utils::request("password");
+            $name = Utils::request("name");
+
+            // On vérifie que les données sont valides.
+            if (empty($login) || empty($password) || empty($name)) {
+                throw new Exception("Tous les champs sont obligatoires.");
+            }
+
+            // On met à jour les informations de l'utilisateur.
+            $userManager = new UserManager();
+            $user = $userManager->getUserById($_SESSION['user_id']);
+            $user->setLogin($login);
+            $user->setPassword($password);
+            $user->setName($name);
+            $userManager->updateUser($user);
+
+            // On redirige vers la page de compte.
+            Utils::redirect("account");
+        } catch (Exception $e) {
+            echo 'Error: ' . $e->getMessage(); // Temporary debug
+            exit;
+        }
+    }
+
+    public function updateImagePath(int $userId, string $imagePath) : void 
+    {
+        $userManager = new UserManager();
+        $user = $userManager->getUserById($userId);
+        if ($user) {
+            $user->setImage($imagePath);
+            $userManager->updateUser($user);
         }
     }
 }
