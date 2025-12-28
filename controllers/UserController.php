@@ -8,15 +8,18 @@ class UserController
      */
     public function showAccount() : void
     {
-        // On vérifie que l'utilisateur est connecté.
         $this->checkIfUserIsConnected();
-        
         $userManager = new UserManager();
         $user = $userManager->getUserById($_SESSION['user_id']);
-
+        $bookManager = new BookManager();
+        $books = $bookManager->getBooksByUserId($user->getId());
         $view = new View("Compte");
-        $view->render("accountPage", ['user' => $user]);
+        $view->render("accountPage", [
+            'user' => $user,
+            'books' => $books
+        ]);
     }
+
 
     /**
      * Affiche la page de connexion.
