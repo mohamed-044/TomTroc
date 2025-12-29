@@ -14,6 +14,7 @@
     private string $description = "";
     private string $image = "";
     private string $userName = "";
+    private string $userImage = "";
 
     /**
      * Setter pour l'id de l'utilisateur. 
@@ -141,15 +142,40 @@
     {
         return $this->userName;
     }
-
+    
+    /**
+     * Getter pour l'id.
+     * @return int
+     */
     public function getId() : int
     {
     return $this->id;
     }
 
+    /** 
+     * Setter pour l'id.
+     * @param int $id
+     * @return void
+     */
     public function setId(int $id) : void
     {
         $this->id = $id;
     }
 
+    /**
+     * Setter pour l'image d'utilisateur.
+     * @param string $userImage
+     */
+    public function setUserImage(string $userImage) : void
+    {
+        $this->userImage = $userImage;
+    }
+    /**
+     * Getter pour l'image d'utilisateur.
+     * @return string
+     */
+    public function getUserImage() : string
+    {
+        return $this->userImage;
+    }
 }
