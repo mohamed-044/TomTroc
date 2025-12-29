@@ -31,13 +31,12 @@ class BookManager extends AbstractEntityManager
      */
     public function getBookById(int $id) : ?Book
     {
-        $sql = "SELECT * FROM book WHERE id = :id";
-        $result = $this->db->query($sql, ['id' => $id]);
-        $book = $result->fetch();
-        if ($book) {
-            return new Book($book);
-        }
-        return null;
+        $sql = "SELECT book.*, user.name AS user_name, user.image AS user_image FROM book JOIN user ON user.id = book.user_id WHERE book.id = :id";
+
+        $result = DBManager::getInstance()->query($sql, ['id' => $id]);
+        $data = $result->fetch();
+
+        return $data ? new Book($data) : null;
     }
 
     /**
