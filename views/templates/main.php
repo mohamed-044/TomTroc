@@ -28,9 +28,9 @@
         foreach ($books as $book): ?>
         <div class="card">
             <img class="card_image" src="./img/<?php echo htmlspecialchars($book->getImage() ?? 'hero_image.jpg'); ?>" alt="Card Image">
-            <p class="card_title"><?php echo htmlspecialchars($book->getTitle() ?? 'Titre inconnu'); ?></p>
+            <a class="card_title" href="index.php?action=bookDetails&id=<?php echo $book->getId(); ?>"><p><?php echo htmlspecialchars($book->getTitle() ?? 'Titre inconnu'); ?></a></p>
             <p class="card_author"><?php echo htmlspecialchars($book->getAuthor() ?? 'Auteur inconnu'); ?></p>
-            <p class="card_user">Proposé par : <?php echo htmlspecialchars($book->getUserName() ?? 'Utilisateur inconnu'); ?></p> 
+            <a class="card_user" href="index.php?action=profile&id=<?php echo $book->getUserId(); ?>">Proposé par : <?php echo htmlspecialchars($book->getUserName() ?? 'Utilisateur inconnu'); ?></a> 
         </div>
         <?php endforeach; ?>
     </div>
