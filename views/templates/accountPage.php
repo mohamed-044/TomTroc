@@ -85,11 +85,11 @@
         </div>
 
         <div class="actions">
-            <a href="#">Éditer</a>
-            <a href="#" class="delete">Supprimer</a>
+            <a href="index.php?action=editBook&id=<?php echo $book->getId(); ?>">Éditer</a>
+            <a href="index.php?action=deleteBook&id=<?php echo $book->getId(); ?>" class="delete">Supprimer</a>
         </div>
     </div>
-
+    
 <?php endforeach; ?>
 
 
