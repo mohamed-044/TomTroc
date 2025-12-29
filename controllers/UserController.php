@@ -233,4 +233,24 @@ class UserController
             $userManager->updateUser($user);
         }
     }
+
+    public function showUserProfile(int $userId) : void 
+    {
+        $userManager = new UserManager();
+        $bookManager = new BookManager();
+
+        $user = $userManager->getUserById($userId);
+        if (!$user) {
+            throw new Exception("Utilisateur non trouvé.");
+        }
+
+        // Récupérer les livres de l'utilisateur
+        $books = $bookManager->getBooksByUserId($userId);
+
+        $view = new View("Profil utilisateur");
+        $view->render("profile", [
+            'user' => $user,
+            'books' => $books
+        ]);
+    }
 }
