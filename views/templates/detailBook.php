@@ -11,23 +11,20 @@
 
 <section class="hero-section">
     <div class="hero-image-detail">
-        <img id="detail_book_image" src="./img/hero_image.jpg" alt="Detail Book Image">
+        <img id="detail_book_image" src="./img/<?php echo htmlspecialchars($book->getImage() ?? ''); ?>" alt="Detail Book Image">
     </div>       
     <div class="hero-text">
-        <h1 class="title">The Kinkfolk Table</h1>
-        <p class="author"> Par: Nathan Williams</p>
+        <h1 class="title"><?php echo htmlspecialchars($book->getTitle() ?? 'Titre inconnu'); ?></h1>
+        <p class="author"> Par: <?php echo htmlspecialchars($book->getAuthor() ?? 'Auteur inconnu'); ?></p>
         <img id="line" src="./img/line.png" alt="Line">
         <p class="little">DESCRIPTION</p>
-        <p class="detail_description">J'ai récemment plongé dans les pages de 'The Kinfolk Table' et j'ai été enchanté par cette œuvre captivante. Ce livre va bien au-delà d'une simple collection de recettes ; il célèbre l'art de partager des moments authentiques autour de la table. 
-        Les photographies magnifiques et le ton chaleureux captivent dès le départ, transportant le lecteur dans un voyage à travers des recettes et des histoires qui mettent en avant la beauté de la simplicité et de la convivialité. 
-        Chaque page est une invitation à ralentir, à savourer et à créer des souvenirs durables avec les êtres chers. 
-        'The Kinfolk Table' incarne parfaitement l'esprit de la cuisine et de la camaraderie, et il est certain que ce livre trouvera une place spéciale dans le cœur de tout amoureux de la cuisine et des rencontres inspirantes.</p>
+        <p class="detail_description"><?php echo htmlspecialchars($book->getDescription() ?? 'Description inconnue'); ?></p>
         <p class="little">PROPRIETAIRE</p>
         <div class="owner-info">
-            <img id="owner_image" src="./img/section_image.jpg" alt="Owner Image">
-            <p class="owner_name">Alexlecture</p>
+            <img id="owner_image" src="./img/<?php echo htmlspecialchars($book->getUserImage() ?? ''); ?>" alt="Owner Image">
+            <p class="owner_name"><?php echo htmlspecialchars($book->getUserName() ?? 'Propriétaire inconnu'); ?></p>
         </div>
-        <a href="./views/templates/messages.php" class="cta-button4">Envoyer un message</a>
+        <a href="index.php?action=sendMessage&id=<?php echo $book->getId(); ?>" class="cta-button4">Envoyer un message</a>
     </div>
          
 </section>
