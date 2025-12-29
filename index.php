@@ -78,6 +78,11 @@ try {
             $bookController->updateBook();
             break;
 
+        case 'bookDetails':
+            $bookController = new BookController();
+            $bookController->showBookDetails();
+            break;
+            
         default:
             throw new Exception("La page demandée n'existe pas.");
     }
