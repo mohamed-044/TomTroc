@@ -95,4 +95,20 @@ class BookController
         header("Location: index.php?action=account");
         exit;
     }
+
+    /**
+     * Affiche les détails d'un livre.
+     * @return void
+     */
+    public function showBookDetails() : void
+    {
+        $bookId = isset($_GET['id']) ? (int)$_GET['id'] : -1;
+        $bookManager = new BookManager();
+        $book = $bookManager->getBookById($bookId);
+        if (!$book) {
+            throw new Exception("Livre non trouvé.");
+        }
+        $view = new View("Détails du livre");
+        $view->render("detailBook", ['book' => $book]);
+        }
 }
