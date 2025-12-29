@@ -82,7 +82,12 @@ try {
             $bookController = new BookController();
             $bookController->showBookDetails();
             break;
-            
+
+        case 'profile':
+            $userController = new UserController();
+            $userController->showUserProfile($_SESSION['user_id']);
+            break;
+
         default:
             throw new Exception("La page demandée n'existe pas.");
     }
