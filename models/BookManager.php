@@ -10,16 +10,19 @@ class BookManager extends AbstractEntityManager
      * @return array : un tableau d'objets Book.
      */
     public function getAllBooks() : array
-{
-    $sql = "SELECT book.*, user.name AS user_name FROM book JOIN user ON book.user_id = user.id";
-    $result = $this->db->query($sql);
-    $books = [];
+    {
+        $sql = "SELECT book.*, user.name AS user_name FROM book JOIN user ON book.user_id = user.id";
 
-    while ($book = $result->fetch()) {
-        $books[] = new Book($book);
+        $result = DBManager::getInstance()->query($sql);
+        $books = [];
+
+        while ($row = $result->fetch()) {
+            $books[] = new Book($row);
+        }
+
+        return $books;
     }
-    return $books;
-}
+
     
     /**
      * Récupère un livre par son id.
@@ -61,7 +64,7 @@ class BookManager extends AbstractEntityManager
     {
         $sql = "INSERT INTO book (id_user, title, author, image, description, status) VALUES (:id_user, :title, :author, :image, :description, :status)";
         $this->db->query($sql, [
-            'id_user' => $book->getIdUser(),
+            'id_user' => $book->getUserId(),
             'title' => $book->getTitle(),
             'author' => $book->getAuthor(),
             'image' => $book->getImage(),
@@ -75,18 +78,23 @@ class BookManager extends AbstractEntityManager
      * @param Book $book : le livre à modifier.
      * @return void
      */
-    public function updateBook(Book $book) : void
+
+    public function updateBook(Book $book)
     {
-        $sql = "UPDATE book SET title = :title, author = :author, image = :image, description = :description, status = :status, date_update = NOW() WHERE id = :id";
-        $this->db->query($sql, [
+        $sql = "UPDATE book SET title = :title, author = :author, description = :description, status = :status WHERE id = :id";
+
+        $pdo = DBManager::getInstance()->getPDO();
+        $stmt = $pdo->prepare($sql);
+
+        $stmt->execute([
             'title' => $book->getTitle(),
             'author' => $book->getAuthor(),
-            'image' => $book->getImage(),
             'description' => $book->getDescription(),
             'status' => $book->getStatus(),
             'id' => $book->getId()
         ]);
     }
+
 
     /**
      * Supprime un livre.
@@ -106,13 +114,13 @@ class BookManager extends AbstractEntityManager
      */
     public function getBooksByUserId(int $userId) : array
     {
-    $sql = "SELECT * FROM book WHERE user_id = :user_id";
-    $result = $this->db->query($sql, ['user_id' => $userId]);
+        $sql = "SELECT * FROM book WHERE user_id = :user_id";
+        $result = $this->db->query($sql, ['user_id' => $userId]);
 
-    $books = [];
-    while ($book = $result->fetch()) {
-        $books[] = new Book($book);
-    }
-    return $books;
+        $books = [];
+        while ($book = $result->fetch()) {
+            $books[] = new Book($book);
+        }
+        return $books;
     }
 }
