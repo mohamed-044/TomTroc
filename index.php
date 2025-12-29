@@ -63,6 +63,21 @@ try {
             $userController->uploadUserImage();
             break;
 
+        case 'editBook': 
+            $bookController = new BookController();
+            $bookController->showEditBookForm();
+            break;
+
+        case 'deleteBook': 
+            $bookController = new BookController();
+            $bookController->deleteBook();
+            break;
+
+        case 'updateBook':
+            $bookController = new BookController();
+            $bookController->updateBook();
+            break;
+
         default:
             throw new Exception("La page demandée n'existe pas.");
     }
