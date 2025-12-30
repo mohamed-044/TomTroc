@@ -88,6 +88,11 @@ try {
             $userController->showUserProfile($_SESSION['user_id']);
             break;
 
+        case 'sendMessage' :
+            $messageController = new MessageController();
+            $messageController->sendMessage();
+            break;
+            
         default:
             throw new Exception("La page demandée n'existe pas.");
     }

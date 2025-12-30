@@ -13,54 +13,54 @@
     <div class="messages-preview">
         <h1 class="title6">Messagerie</h1>
         <div class="open-message-card">
-            <img src="./img/section_image.jpg" alt="Account Image" id="message-avatar">
+            <img src="./img<?php echo $senderAvatar ?? '/alex_profile_image.png'; ?>" alt="Account Image" id="message-avatar">
             <div class="new-messages">
             <div class="message-header">
-            <h2 class="message-sender">Alexlecture</h2>
-            <span class="message-sender">15:43</span>
+            <h2 class="message-sender"><?php echo $senderName ?? 'Utilisateur'; ?></h2>
+            <span class="message-sender"><?php echo $senderTime ?? '00:00'; ?></span>
             </div>
-            <p class="message-prewiew-text">Lorem ipsum dolor sit amet, consectetur .adipiscing elit, sed do eiusmod tempor </p>
+            <p class="message-prewiew-text"><?php echo $senderPreview ?? 'Aperçu du message'; ?></p>
             </div>
         </div>
         <div class="message-card">
-            <img src="./img/section_image.jpg" alt="Account Image" id="message-avatar">
+            <img src="./img<?php echo $senderAvatar ?? '/alex_profile_image.png'; ?>" alt="Account Image" id="message-avatar">
             <div class="new-messages">
             <div class="message-header">
-            <h2 class="message-sender">Alexlecture</h2>
-            <span class="message-sender">15:43</span>
+            <h2 class="message-sender"><?php echo $senderName ?? 'Utilisateur'; ?></h2>
+            <span class="message-sender"><?php echo $senderTime ?? '00:00'; ?></span>
             </div>
-            <p class="message-prewiew-text">Lorem ipsum dolor sit amet, consectetur .adipiscing elit, sed do eiusmod tempor</p>
+            <p class="message-prewiew-text"><?php echo $senderPreview ?? 'Aperçu du message'; ?></p>
             </div>
         </div>
     </div>
 <div class="message-content">
     <div class="message-header-content">
-        <img src="./img/section_image.jpg" alt="Account Image" id="message-avatar-large">
-        <h2 class="message-sender-large">Alexlecture</h2>
+        <img src="./img<?php echo $receiverAvatar ?? '/alex_profile_image.png'; ?>" alt="Account Image" id="message-avatar-large">
+        <h2 class="message-sender-large"><?php echo $senderName ?? 'Utilisateur'; ?></h2>
     </div>
     <div class="message-body">
         <div class="message container sent-message-container">
-            <span class="sent-message-time">21.08 15:47</span>
+            <span class="sent-message-time"><?php echo $sentTime ?? '00:00 00:00'; ?></span>
             <div class="message sent-message">
-                <p class="message-text">Lorem ipsum dolor sit amet, consectetur .adipiscing elit, sed do eiusmod tempor </p>
+                <p class="message-text"><?php echo $sentMessage ?? 'Message envoyé'; ?></p>
             </div>
         </div>
         <div class="message-container received-message-container">
-            <img src="./img/section_image.jpg" alt="Account Image" id="received-message-avatar">
-            <span class="received-message-time">21.08 15:50</span>
+            <img src="./img<?php echo $senderAvatar ?? '/alex_profile_image.png'; ?>" alt="Account Image" id="received-message-avatar">
+            <span class="received-message-time"><?php echo $receivedTime ?? '00:00 00:00'; ?></span>
             <div class="message received-message">
-                <p class="message-text">Lorem ipsum dolor sit amet, consectetur .adipiscing elit, sed do eiusmod tempor </p>
+                <p class="message-text"><?php echo $receivedMessage ?? 'Message reçu'; ?></p>
             </div>
         </div>
     </div>
-    <form class="message-input-form" action="./index.php" method="post">
-        <input type="text" id="message-input" name="message-input" placeholder="Tapez votre message ici" required>
-        <button type="submit" class="cta-button7">Envoyer</button>
+    <form class="message-input-form" action="index.php?action=processSendMessage" method="post">
+    <input type="hidden" name="receiver_id" value="<?= $receiverId ?>">
+    <input type="text" id="message-input" name="content" placeholder="Tapez votre message ici" required>
+    <button type="submit" class="cta-button7">Envoyer</button>
     </form>
+
 </div>
-
 </section>
-
 <?php include __DIR__ . '/footer.php'; ?>
 </body>
 </html>

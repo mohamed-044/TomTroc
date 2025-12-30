@@ -24,7 +24,7 @@
             <img id="owner_image" src="./img/<?php echo htmlspecialchars($book->getUserImage() ?? ''); ?>" alt="Owner Image">
             <p class="owner_name"><?php echo htmlspecialchars($book->getUserName() ?? 'Propriétaire inconnu'); ?></p>
         </div>
-        <a href="index.php?action=sendMessage&id=<?php echo $book->getId(); ?>" class="cta-button4">Envoyer un message</a>
+        <a href="index.php?action=messages&id=<?php echo $book->getId(); ?>" class="cta-button4">Envoyer un message</a>
     </div>
          
 </section>
