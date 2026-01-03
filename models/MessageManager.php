@@ -26,11 +26,10 @@ class MessageManager extends AbstractEntityManager
      */
     public function addMessage(int $senderId, int $receiverId, string $content) : void 
     {
-        $sql = "INSERT INTO message (sender_id, receiver_id, content, sent_at) VALUES (:sender_id, :receiver_id, :content, NOW())";
+        $sql = "INSERT INTO message (sender_id, receiver_id, content, created_at) VALUES (:sender_id, :receiver_id, :content, NOW())";
         $this->db->query($sql, [ 'sender_id' => $senderId, 'receiver_id' => $receiverId, 'content' => $content
         ]);
     }
-
     /**
      * Récupère les messages entre deux utilisateurs.
      * @param int $userId1
@@ -39,7 +38,7 @@ class MessageManager extends AbstractEntityManager
      */
     public function getMessagesBetweenUsers(int $userId1, int $userId2) : array
     {
-        $sql = "SELECT * FROM message WHERE (sender_id = :user1 AND receiver_id = :user2) OR (sender_id = :user2 AND receiver_id = :user1) ORDER BY sent_at ASC";
+        $sql = "SELECT * FROM message WHERE (sender_id = :user1 AND receiver_id = :user2) OR (sender_id = :user2 AND receiver_id = :user1) ORDER BY created_at ASC";
         $result = $this->db->query($sql, ['user1' => $userId1, 'user2' => $userId2]);
         return $result->fetchAll(PDO::FETCH_ASSOC);
     }
@@ -51,10 +50,10 @@ class MessageManager extends AbstractEntityManager
      * @param string $content
      * @return void
      */
-    public function createMessage(int $conversationId, int $senderId, string $content) : void 
+    public function createMessage(int $senderId, string $content, int $receiverId) : void 
     {
-        $sql = "INSERT INTO message (conversation_id, sender_id, content, sent_at) VALUES (:conversation_id, :sender_id, :content, NOW())";
-        $this->db->query($sql, ['conversation_id' => $conversationId, 'sender_id' => $senderId, 'content' => $content
+        $sql = "INSERT INTO message (sender_id, receiver_id, content, created_at) VALUES (:sender_id, :receiver_id, :content, NOW())";
+        $this->db->query($sql, ['sender_id' => $senderId, 'receiver_id' => $receiverId, 'content' => $content, 'created_at' => time()
         ]);
     }
 
@@ -72,16 +71,16 @@ class MessageManager extends AbstractEntityManager
     }
 
     /**
-     * Récupère une conversation par son id.
-     * @param int $id
-     * @return ?array
+     * Récupère le dernier partenaire de conversation d'un utilisateur.
+     * @param int $userId
+     * @return ?int
      */
-    public function getConversationById(int $id) : ?array
+    public function getLastMessageUser(int $userId) : ?int
     {
-        $sql = "SELECT * FROM conversation WHERE id = :id";
-        $result = $this->db->query($sql, ['id' => $id
-        ]);
-        $conversation = $result->fetch();
-        return $conversation ? $conversation : null;
+        $sql = "SELECT CASE  WHEN sender_id = :id THEN receiver_id  ELSE sender_id  END AS partner FROM message WHERE sender_id = :id OR receiver_id = :id ORDER BY created_at DESC LIMIT 1";
+        $result = $this->db->query($sql, ['id' => $userId]);
+        $row = $result->fetch(PDO::FETCH_ASSOC);
+        return $row ? (int)$row['partner'] : null;
     }
+
 }
