@@ -6,15 +6,13 @@ class Message {
     private $receiverId;
     private $content;
     private $created_at;
-    private $conversationId;
 
-    public function __construct($id, $senderId, $receiverId, $content, $created_at, $conversationId) {
+    public function __construct($id, $senderId, $receiverId, $content, $created_at) {
         $this->id = $id;
         $this->senderId = $senderId;
         $this->receiverId = $receiverId;
         $this->content = $content;
         $this->created_at = $created_at;
-        $this->conversationId = $conversationId;
     }
 
     public function getId() {
@@ -55,13 +53,5 @@ class Message {
 
     public function setCreatedAt($created_at) {
         $this->created_at = $created_at;
-    }
-
-    public function getConversationId() {
-        return $this->conversationId;
-    }
-
-    public function setConversationId($conversationId) {
-        $this->conversationId = $conversationId;
     }
 }
