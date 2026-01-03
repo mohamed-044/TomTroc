@@ -93,6 +93,16 @@ try {
             $messageController->sendMessage();
             break;
             
+        case 'processSendMessage' :
+            $messageController = new MessageController();
+            $messageController->processSendMessage();
+            break;   
+            
+        case 'messageDetails' :
+            $messageController = new MessageController();
+            $messageController->showMessageDetails();
+            break;
+
         default:
             throw new Exception("La page demandée n'existe pas.");
     }
