@@ -930,6 +930,8 @@ footer {
   padding-right: 30px;
   padding-top: 10px;
   padding-bottom: 10px;
+  text-decoration: none;
+  color: inherit;
 }
 
 .message-card {
@@ -1014,7 +1016,7 @@ footer {
   align-self: flex-start;
   padding: 10px 15px;
   border-radius: 20px;
-  max-width: 60%;
+  max-width: fit-content;
   margin-bottom: 10px;
 }
 
@@ -1024,7 +1026,7 @@ footer {
   align-self: flex-end;
   padding: 10px 15px;
   border-radius: 20px;
-  max-width: 60%;
+  max-width: fit-content;
   margin-bottom: 10px;
 }
 
