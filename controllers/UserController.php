@@ -175,10 +175,12 @@ class UserController
                 throw new Exception("Ce login est déjà utilisé.");
             }
 
+            $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+
             // On crée le nouvel utilisateur.
             $newUser = new User([
                 'login' => $login,
-                'password' => $password,
+                'password' => $hashedPassword,
                 'name' => $name
             ]);
             // Code pour enregistrer le nouvel utilisateur dans la base de données.
