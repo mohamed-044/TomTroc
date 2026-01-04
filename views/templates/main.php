@@ -25,14 +25,19 @@
     <div class="new-books">
         <?php
         $books = $books ?? [];
-        foreach ($books as $book): ?>
-        <div class="card">
-            <img class="card_image" src="./img/<?php echo htmlspecialchars($book->getImage() ?? 'hero_image.jpg'); ?>" alt="Card Image">
-            <a class="card_title" href="index.php?action=bookDetails&id=<?php echo $book->getId(); ?>"><p><?php echo htmlspecialchars($book->getTitle() ?? 'Titre inconnu'); ?></p></a>
-            <p class="card_author"><?php echo htmlspecialchars($book->getAuthor() ?? 'Auteur inconnu'); ?></p>
-            <a class="card_user" href="index.php?action=profile&id=<?php echo $book->getUserId(); ?>">Proposé par : <?php echo htmlspecialchars($book->getUserName() ?? 'Utilisateur inconnu'); ?></a> 
+        $lastBooks = array_slice($books, 0, 4);
+        ?>
+
+        <div class="new-books">
+            <?php foreach ($lastBooks as $book): ?>
+                <div class="card">
+                    <img class="card_image" src="./img/<?php echo htmlspecialchars($book->getImage() ?? 'hero_image.jpg'); ?>" alt="Card Image">
+                    <a class="card_title" href="index.php?action=bookDetails&id=<?php echo $book->getId(); ?>"><p><?php echo htmlspecialchars($book->getTitle() ?? 'Titre inconnu'); ?></p></a>
+                    <p class="card_author"><?php echo htmlspecialchars($book->getAuthor() ?? 'Auteur inconnu'); ?></p>
+                    <a class="card_user" href="index.php?action=profile&id=<?php echo $book->getUserId(); ?>">Proposé par : <?php echo htmlspecialchars($book->getUserName() ?? 'Utilisateur inconnu'); ?></a> 
+                </div>
+            <?php endforeach; ?>
         </div>
-        <?php endforeach; ?>
     </div>
     <a href="index.php?action=books" class="cta-button2">Voir tout les livres</a>
 </section>
