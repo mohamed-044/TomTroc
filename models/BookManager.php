@@ -122,4 +122,26 @@ class BookManager extends AbstractEntityManager
         }
         return $books;
     }
+
+    /**
+     * Recherche des livres par titre ou auteur.
+     * @param string $search : le terme de recherche.
+     * @return array : un tableau d'objets Book.
+     */
+    public function searchBooks(string $search)
+    {
+        $sql = "SELECT * FROM book WHERE title LIKE :search OR author LIKE :search";
+
+        $stmt = $this->db->query($sql, ['search' => '%' . $search . '%']);
+
+        $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        $books = [];
+        foreach ($rows as $row) {
+            $books[] = new Book($row);
+        }
+
+        return $books;
+    }
 }
+
