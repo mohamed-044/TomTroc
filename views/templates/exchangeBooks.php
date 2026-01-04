@@ -29,7 +29,6 @@
         <a class="card_user" href="index.php?action=profile&id=<?php echo $book->getUserId(); ?>">Proposé par : <?php echo htmlspecialchars($book->getUserName() ?? 'Utilisateur inconnu'); ?></a> 
     </div>
     <?php endforeach; ?>
-        </div>
     </div>
 
 </section>

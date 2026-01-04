@@ -54,7 +54,7 @@
                         </div>
                     <?php else: ?>
                         <div class="message-container received-message-container">
-                            <img src="./img/<?= $receiver->getImage() ?>" alt="Avatar" id="received-message-avatar">
+                            <img src="./img/<?= $receiver->getImage() ?>" alt="Avatar" class="received-message-avatar">
                             <span class="received-message-time"><?= date('d.m H:i', strtotime($msg['created_at'])) ?></span>
                             <div class="message received-message">
                                 <p class="message-text"><?= htmlspecialchars($msg['content']) ?></p>

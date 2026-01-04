@@ -289,7 +289,6 @@ footer {
 .footer-content {
     font-size: 14px;
     font-weight: 300;
-    font-style: light;
 }
 
 #footer_image {
@@ -1071,7 +1070,7 @@ footer {
   align-self: start;
 }
 
-#received-message-avatar {
+.received-message-avatar {
   width: 24px;
   height: 24px;
   border-radius: 50%; 
