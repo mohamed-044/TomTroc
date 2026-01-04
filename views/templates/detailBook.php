@@ -21,7 +21,7 @@
         <p class="detail_description"><?php echo htmlspecialchars($book->getDescription() ?? 'Description inconnue'); ?></p>
         <p class="little">PROPRIETAIRE</p>
         <div class="owner-info">
-            <img id="owner_image" src="./img/<?php echo htmlspecialchars($book->getUserImage() ?? ''); ?>" alt="Owner Image">
+            <img id="owner_image" src="./img/<?php echo htmlspecialchars($book->getUserImage() ?? ''); ?>" alt="">
             <p class="owner_name"><?php echo htmlspecialchars($book->getUserName() ?? 'Propriétaire inconnu'); ?></p>
         </div>
         <a href="index.php?action=messages&id=<?php echo $book->getId(); ?>" class="cta-button4">Envoyer un message</a>
