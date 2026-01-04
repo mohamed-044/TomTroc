@@ -23,7 +23,7 @@
         </form>
         <p class="signup-text">Pas encore de compte ? <a class="signup-link" href="index.php?action=register">Inscrivez-vous</a></p>
     </div>
-    <img id="connect_image" src="./img/hero_image.jpg" alt="Hero Image">
+    <img id="connect_image" src="./img/connection_image.png" alt="Hero Image">
 </section>
 
 <?php include __DIR__ . '/footer.php'; ?>

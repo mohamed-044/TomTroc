@@ -26,7 +26,7 @@
         </form>
         <p class="signup-text">Déjà inscrit ? <a class="signup-link" href="index.php?action=login">Connectez-vous</a></p>
     </div>
-    <img id="connect_image" src="./img/hero_image.jpg" alt="Hero Image">
+    <img id="connect_image" src="./img/connection_image.png" alt="Hero Image">
 </section>
 
 <?php include __DIR__ . '/footer.php'; ?>
