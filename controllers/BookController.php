@@ -22,14 +22,23 @@ class BookController
     {
         try {
             $bookManager = new BookManager();
-            $books = $bookManager->getAllBooks();
+            $search = $_GET['q'] ?? null;
+
+            if (!empty($search)) {
+                $books = $bookManager->searchBooks($search);
+            } else {
+                $books = $bookManager->getAllBooks();
+            }
+
             $view = new View("Livres à l'échange");
-            $view->render("exchangeBooks", ['books' => $books]);
+            $view->render("exchangeBooks", ['books' => $books, 'search' => $search]);
+
         } catch (Exception $e) {
             echo 'Error: ' . $e->getMessage();
             exit;
         }
     }
+
 
     /**
      * Affiche le formulaire d'édition d'un livre.
