@@ -8,15 +8,16 @@
 </head>
 <body>
 <?php include __DIR__ . '/header.php'; ?>
-
-
 <section class="exchange-books-section">
     <div class="top_section">
         <h1 class="title2">Nos livres à l'échange</h1>
+        <form method="get" action="index.php">
+        <input type="hidden" name="action" value="books">
         <div class="search-bar">
-        <img id="union_image" src="./img/union.png" alt="Uninon Image">
-        <input type="search" id="site-search" name="q" placeholder="Rechercher un livre"/>
-        </div>
+        <img id="union_image" src="./img/union.png" alt="Union Image">
+        <input type="search" id="site-search" name="q" placeholder="Rechercher un livre">
+        </div> 
+        </form>
     </div>
     <div class="new-books">
         <?php
@@ -30,7 +31,6 @@
     </div>
     <?php endforeach; ?>
     </div>
-
 </section>
 <?php include __DIR__ . '/footer.php'; ?>
 </body>
