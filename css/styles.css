@@ -116,7 +116,10 @@ a.navlink{
 .new-books {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap; 
     gap: 40px;
+    max-width: 950px;
+    justify-content: center;
 }
 
 .card {
