@@ -26,10 +26,16 @@ class UserController
      * @return void
      */
     public function showLogin() : void
-    {
-        $view = new View("Connexion");
-        $view->render("connectionForm");
-    }    
+{
+    if (isset($_SESSION['user_id'])) {
+        header("Location: index.php?action=account");
+        exit;
+    }
+
+    $view = new View("Connexion");
+    $view->render("connectionForm");
+}
+ 
 
      /**
      * Vérifie que l'utilisateur est connecté.
