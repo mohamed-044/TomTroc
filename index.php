@@ -33,10 +33,10 @@ try {
             $userController->showLogin();
             break;    
         
-        case 'messages':
+        case 'messages': 
             $messageController = new MessageController();
-            $messageController->showMessages();
-            break;    
+            $messageController->showConversations();
+            break;
 
         case 'connectUser': 
             $userController = new UserController();
@@ -85,12 +85,12 @@ try {
 
         case 'profile':
             $userController = new UserController();
-            $userController->showUserProfile($_SESSION['user_id']);
+            $userController->showUserProfile((int) $_GET['id']);
             break;
 
         case 'sendMessage' :
             $messageController = new MessageController();
-            $messageController->sendMessage();
+            $messageController->showMessages();
             break;
             
         case 'processSendMessage' :
