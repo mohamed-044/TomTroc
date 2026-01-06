@@ -100,10 +100,10 @@ class User extends AbstactEntity
      * Getter pour la date d'inscription en années.
      * @return ?string
      */
-    public function getJoinDate() : ?string 
+    public function getJoinDate() : string 
     {
         $now = new DateTime();
         $interval = $now->diff($this->dateCreated);
-        return $interval->y ? (string)$interval->y : null;
+        return (string)$interval->y;
     }
 }
