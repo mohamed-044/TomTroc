@@ -83,4 +83,34 @@ class MessageManager extends AbstractEntityManager
         return $row ? (int)$row['partner'] : null;
     }
 
+    /**
+     * Récupère toutes les conversations d'un utilisateur.
+     * @param int $userId
+     * @return array
+     */
+    public function getConversationsForUser(int $userId) : array
+    {
+        $sql = "SELECT CASE  WHEN sender_id = :id THEN receiver_id  ELSE sender_id  END AS partner, MAX(created_at) AS last_message_time FROM message WHERE sender_id = :id OR receiver_id = :id GROUP BY partner ORDER BY last_message_time DESC";
+        $result = $this->db->query($sql, ['id' => $userId]);
+        return $result->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    /**
+     * Récupère le dernier message entre deux utilisateurs.
+     * @param int $userId1
+     * @param int $userId2
+     * @return ?array
+     */    
+    public function getLastMessageBetweenUsers(int $userId1, int $userId2) : ?array
+    {
+        $sql = "SELECT * FROM message  WHERE (sender_id = :u1 AND receiver_id = :u2) OR (sender_id = :u2 AND receiver_id = :u1) ORDER BY created_at DESC LIMIT 1";
+        $result = $this->db->query($sql, [
+            'u1' => $userId1,
+            'u2' => $userId2
+        ]);
+
+        $row = $result->fetch(PDO::FETCH_ASSOC);
+        return $row ?: null;
+    }
+
 }
