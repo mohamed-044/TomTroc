@@ -386,6 +386,13 @@ footer {
     margin-bottom: 80px;
 }   
 
+.owner_name {
+    font-size: 14px;
+    font-weight: 400;
+    color: #292929;
+    text-decoration: none;
+}
+
 .author {
     font-size: 16px;
     font-weight: 400;
@@ -503,6 +510,7 @@ footer {
     width: 150px;
     height: 150px;
     border-radius: 50%;
+    margin-bottom: 50px;
 }
 
 .modify-text {
@@ -875,7 +883,6 @@ footer {
   background-color: #FAF9F7;
   width: 530px;
   height: 895px;
-  gap: 20px;
   padding-top: 30px;
   margin-left: 150px;
 }
@@ -946,6 +953,8 @@ footer {
   padding-right: 30px;
   padding-top: 10px;
   padding-bottom: 10px;
+  text-decoration: none;
+  color: inherit;  
 }
 
 .message-prewiew-text {
@@ -1004,9 +1013,11 @@ footer {
   gap: 12px;
 }
 
-.message-sender-large {
+a.message-sender-large {
   font-size: 14px;
   font-weight: 600;
+  color: inherit;
+  text-decoration: none;
 }
 
 .message-body {
