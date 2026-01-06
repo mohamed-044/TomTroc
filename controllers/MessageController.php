@@ -6,38 +6,42 @@ class MessageController
      * Affiche la page d'accueil.
      * @return void
      */
-    public function showMessages() : void
+    public function showMessages()
     {
-        $userController = new UserController();
-        $userController->checkIfUserIsConnected();
-
-        $senderId = $_SESSION['user_id'];
-        $messageManager = new MessageManager();
-        $userManager = new UserManager();
-
-        // Trouver le dernier utilisateur avec qui on a parlé
-        $receiverId = $messageManager->getLastMessageUser($senderId);
-
-        if ($receiverId) {
-            $receiver = $userManager->getUserById($receiverId);
-            $messages = $messageManager->getMessagesBetweenUsers($senderId, $receiverId);
-            $lastMessage = !empty($messages) ? end($messages) : null;
-        } else {
-            // Aucun message encore
-            $receiver = null;
-            $messages = [];
-            $lastMessage = null;
+        if (!isset($_GET['id'])) {
+            header("Location: index.php?action=messages");
+            exit; 
         }
 
-        $view = new View("Messagerie");
+        $senderId = $_SESSION['user_id'];
+        $receiverId = (int) $_GET['id'];
+
+        $userManager = new UserManager();
+        $messageManager = new MessageManager();
+
+        $receiver = $userManager->getUserById($receiverId);
+        $sender = $userManager->getUserById($senderId);
+
+        $messages = $messageManager->getMessagesBetweenUsers($senderId, $receiverId);
+        $lastMessage = !empty($messages) ? end($messages) : null;
+
+        $conversations = $messageManager->getConversationsForUser($senderId);
+
+        foreach ($conversations as &$conv) {
+            $conv['user'] = $userManager->getUserById($conv['partner']);
+            $conv['lastMessage'] = $messageManager->getLastMessageBetweenUsers($senderId, $conv['partner']);
+        }
+
+        $view = new View("messages");
         $view->render("messages", [
-            'receiver' => $receiver,
-            'receiverId' => $receiverId,
-            'messages' => $messages,
-            'lastMessage' => $lastMessage
+            "receiver" => $receiver,
+            "sender" => $sender,
+            "messages" => $messages,
+            "lastMessage" => $lastMessage,
+            "receiverId" => $receiverId,
+            "conversations" => $conversations
         ]);
     }
-
     
     public function sendMessage()
     {
@@ -50,10 +54,7 @@ class MessageController
         $receiver = $userManager->getUserById($receiverId);
         $sender = $userManager->getUserById($senderId);
 
-        // Récupérer tous les messages
         $messages = $messageManager->getMessagesBetweenUsers($senderId, $receiverId);
-
-        // Récupérer le dernier message
         $lastMessage = !empty($messages) ? end($messages) : null;
 
         $view = new View("messages");
@@ -103,4 +104,32 @@ class MessageController
         $view->render("messageDetails", ['message' => $message]);
     }
     
+    public function showConversations()
+    {
+        if (!isset($_SESSION['user_id'])){
+            header("Location: index.php?action=login");
+            exit; }
+        
+        $senderId = $_SESSION['user_id'];
+
+        $userManager = new UserManager();
+        $messageManager = new MessageManager();
+
+        $conversations = $messageManager->getConversationsForUser($senderId);
+
+        foreach ($conversations as &$conv) {
+            $conv['user'] = $userManager->getUserById($conv['partner']);
+            $conv['lastMessage'] = $messageManager->getLastMessageBetweenUsers($senderId, $conv['partner']);
+        }
+
+        $view = new View("messages");
+        $view->render("messages", [
+            "conversations" => $conversations,
+            "receiver" => null,
+            "messages" => [],
+            "lastMessage" => null,
+            "receiverId" => null
+        ]);
+    }
+
 }
