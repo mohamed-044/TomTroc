@@ -22,9 +22,9 @@
         <p class="little">PROPRIETAIRE</p>
         <div class="owner-info">
             <img id="owner_image" src="./img/<?php echo htmlspecialchars($book->getUserImage() ?? ''); ?>" alt="">
-            <p class="owner_name"><?php echo htmlspecialchars($book->getUserName() ?? 'Propriétaire inconnu'); ?></p>
+            <a href="index.php?action=profile&id=<?php echo $book->getUserId(); ?>" class="owner_name"><?php echo htmlspecialchars($book->getUserName() ?? 'Propriétaire inconnu'); ?></a>
         </div>
-        <a href="index.php?action=messages&id=<?php echo $book->getId(); ?>" class="cta-button4">Envoyer un message</a>
+        <a href="index.php?action=sendMessage&id=<?php echo $book->getUserId(); ?>" class="cta-button4">Envoyer un message</a>
     </div>
          
 </section>
