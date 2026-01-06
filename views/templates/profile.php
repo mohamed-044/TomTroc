@@ -11,13 +11,14 @@
 <section class="account-section2">
 <div class="account-content2">
             <img id="account_image" src="./img/<?php echo htmlspecialchars($user->getImage() ?? './img/default_user_image.jpg'); ?>" alt="Account Image">
-            <a class="modify-text" href="index.php?action=updateImage">modifier</a>
             <img src="./img/line2.png" alt="Line Image">
             <p class="account-name"><?php echo htmlspecialchars($user->getName() ?? 'Nom inconnu'); ?></p>
-            <p class="account-info">Membre depuis <?php echo $user->getJoinDate() ?? 'Inconnue'; ?> ans</p>
+            <p class="account-info">Membre depuis <?php echo $user->getJoinDate(); ?> ans</p>
             <p class="little-text">BIBLIOTHEQUE</p>
             <div class="books-number"><img src="./img/books_icon.svg" alt="Books Icon"><p id="book-text"><?php echo count($books); ?> Livres</p></div>
-            <button type="submit" class="cta-button5">Ecrire un message</button>
+
+            <a href="index.php?action=sendMessage&id=<?php echo $user->getId(); ?>" class="cta-button5">Ecrire un message</a>
+
 </div>
 
 <section class="table2">
