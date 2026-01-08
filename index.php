@@ -103,6 +103,16 @@ try {
             $messageController->showMessageDetails();
             break;
 
+        case 'editBookImage': 
+            $bookController = new BookController();
+            $bookController->editBookImage();
+            break;   
+
+        case 'updateBookImage':
+            $bookController = new BookController();
+            $bookController->updateBookImage();
+            break;
+            
         default:
             throw new Exception("La page demandée n'existe pas.");
     }
