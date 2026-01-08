@@ -119,5 +119,63 @@ class BookController
         }
         $view = new View("Détails du livre");
         $view->render("detailBook", ['book' => $book]);
+    }
+
+    /**
+     * Affiche le formulaire de modification de l'image d'un livre.
+     * @return void
+     */
+    public function editBookImage() : void
+    {
+        $userController = new UserController();
+        $userController->checkIfUserIsConnected();
+
+        $bookId = isset($_GET['id']) ? (int)$_GET['id'] : -1;
+        $bookManager = new BookManager();
+        $book = $bookManager->getBookById($bookId);
+
+        if (!$book) {
+            throw new Exception("Livre non trouvé.");
         }
+
+        $view = new View("Modifier l'image du livre");
+        $view->render("updateBookImage", ['book' => $book]);
+    }
+
+    /**
+     * Met à jour l'image d'un livre.
+     * @return void
+     */
+    public function updateBookImage() : void
+    {
+        $userController = new UserController();
+        $userController->checkIfUserIsConnected();
+
+        $bookId = isset($_GET['id']) ? (int)$_GET['id'] : -1;
+        $bookManager = new BookManager();
+        $book = $bookManager->getBookById($bookId);
+
+        if (!$book) {
+            throw new Exception("Livre non trouvé.");
+        }
+
+        if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
+            $uploadDir = __DIR__ . '/../img/';
+            $uploadedFile = $_FILES['image'];
+            $fileExtension = pathinfo($uploadedFile['name'], PATHINFO_EXTENSION);
+            $newFileName = 'book_' . $bookId . '.' . $fileExtension;
+            $destination = $uploadDir . $newFileName;
+
+            if (move_uploaded_file($uploadedFile['tmp_name'], $destination)) {
+                $book->setImage($newFileName);
+                $bookManager->updateBookImage($bookId, $newFileName);
+                header("Location: index.php?action=account");
+                exit;
+            } else {
+                throw new Exception("Erreur lors du téléchargement de l'image.");
+            }
+        } else {
+            throw new Exception("Aucun fichier téléchargé ou erreur de téléchargement.");
+        }
+    }
 }
