@@ -83,7 +83,7 @@ class UserController
             }
 
             // On vérifie que le mot de passe est correct.
-            if ($password !== $user->getPassword()) {
+            if (!password_verify($password, $user->getPassword())) {
                 throw new Exception("Le mot de passe est incorrect.");
             }
 
@@ -220,7 +220,7 @@ class UserController
             $userManager = new UserManager();
             $user = $userManager->getUserById($_SESSION['user_id']);
             $user->setLogin($login);
-            $user->setPassword($password);
+            $user->setPassword(password_hash($password, PASSWORD_DEFAULT));
             $user->setName($name);
             $userManager->updateUser($user);
 
