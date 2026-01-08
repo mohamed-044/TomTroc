@@ -143,5 +143,20 @@ class BookManager extends AbstractEntityManager
 
         return $books;
     }
+    
+    /**
+     * Met à jour l'image d'un livre.
+     * @param int $bookId : l'id du livre.
+     * @param string $imagePath : le chemin de la nouvelle image.
+     * @return void
+     */
+    public function updateBookImage(int $bookId, string $imagePath) : void
+    {
+        $sql = "UPDATE book SET image = :image WHERE id = :id";
+        $this->db->query($sql, [
+            'image' => $imagePath,
+            'id' => $bookId
+        ]);
+    }
 }
 
