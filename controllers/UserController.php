@@ -71,9 +71,22 @@ class UserController
             $password = Utils::request("password");
 
             // On vérifie que les données sont valides.
-            if (empty($login) || empty($password)) {
-                throw new Exception("Tous les champs sont obligatoires. 1");
+            if (empty($login)) { 
+                $errors[] = "L'adresse mail est obligatoire.";
             }
+            if (empty($password)) { 
+                $errors[] = "Le mot de passe est obligatoire."; 
+            }
+
+            // Si erreurs → on renvoie vers la vue avec les erreurs 
+            if (!empty($errors)) { 
+                $view = new View("Connexion"); 
+                $view->render("connectionForm", [ "errors" => $errors, "login" => $login ]); 
+                return; 
+            }
+
+            
+
 
             // On vérifie que l'utilisateur existe.
             $userManager = new UserManager();
@@ -170,15 +183,29 @@ class UserController
             $name = Utils::request("name");
 
             // On vérifie que les données sont valides.
-            if (empty($login) || empty($password) || empty($name)) {
-                throw new Exception("Tous les champs sont obligatoires.");
+            if (empty($login)) { 
+                $errors[] = "L'adresse mail est obligatoire.";
             }
+            if (empty($password)) { 
+                $errors[] = "Le mot de passe est obligatoire."; 
+            }
+            if (empty($name)) { 
+                $errors[] = "Le pseudo est obligatoire."; 
+            }
+
+            // Si erreurs → on renvoie vers la vue avec les erreurs 
+            if (!empty($errors)) { $view = new View("Inscription"); 
+               $view->render("registrationForm", [ "errors" => $errors, "login" => $login, "name" => $name ]); 
+               return; }
 
             // On vérifie que l'utilisateur n'existe pas déjà.
             $userManager = new UserManager();
             $existingUser = $userManager->getUserByLogin($login);
             if ($existingUser) {
-                throw new Exception("Ce login est déjà utilisé.");
+                $errors[] = "Ce login est déjà utilisé."; 
+                $view = new View("Inscription"); 
+                $view->render("registrationForm", [ "errors" => $errors, "login" => $login, "name" => $name ]); 
+                return;
             }
 
             $hashedPassword = password_hash($password, PASSWORD_DEFAULT);

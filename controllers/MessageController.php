@@ -8,12 +8,16 @@ class MessageController
      */
     public function showMessages()
     {
+        // Vérifie que l'utilisateur est connecté
+        $userController = new UserController();
+        $userController->checkIfUserIsConnected();
+
         if (!isset($_GET['id'])) {
             header("Location: index.php?action=messages");
-            exit; 
+            exit;
         }
 
-        $senderId = $_SESSION['user_id'];
+        $senderId = (int) $_SESSION['user_id'];
         $receiverId = (int) $_GET['id'];
 
         $userManager = new UserManager();

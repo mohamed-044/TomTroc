@@ -39,7 +39,6 @@ class BookController
         }
     }
 
-
     /**
      * Affiche le formulaire d'édition d'un livre.
      * @return void
@@ -57,6 +56,7 @@ class BookController
         $view = new View("Édition du livre");
         $view->render("editBookForm", ['book' => $book]);
     }
+    
     /**
      * Supprime un livre.
      * @return void
@@ -85,25 +85,64 @@ class BookController
         $userController = new UserController();
         $userController->checkIfUserIsConnected();
 
-        $bookId = (int)$_POST['id'];
+        $errors = [];
 
+        // Sécurisation des données
+        $bookId = (int)($_POST['id'] ?? 0);
+        $title = trim($_POST['title'] ?? '');
+        $author = trim($_POST['author'] ?? '');
+        $description = trim($_POST['description'] ?? '');
+        $status = trim($_POST['status'] ?? '');
+
+        // Vérification du livre
         $bookManager = new BookManager();
         $book = $bookManager->getBookById($bookId);
 
         if (!$book) {
-            throw new Exception("Livre non trouvé.");
+            $errors[] = "Livre non trouvé.";
         }
 
-        $book->setTitle($_POST['title']);
-        $book->setAuthor($_POST['author']);
-        $book->setDescription($_POST['description']);
-        $book->setStatus($_POST['status']);
+        // Vérification que l'utilisateur est bien propriétaire du livre
+        if ($book && $book->getUserId() !== $_SESSION['user_id']) {
+            $errors[] = "Vous n'êtes pas autorisé à modifier ce livre.";
+        }
+
+        // Validation des champs
+        if ($title === '') {
+            $errors[] = "Le titre est obligatoire.";
+        }
+        if ($author === '') {
+            $errors[] = "L'auteur est obligatoire.";
+        }
+        if ($description === '') {
+            $errors[] = "La description est obligatoire.";
+        }
+        if (!in_array($status, ["true", "false"])) {
+            $errors[] = "Statut invalide.";
+        }
+
+        // Si erreurs → réaffichage du formulaire
+        if (!empty($errors)) {
+            $view = new View("Modifier un livre");
+            $view->render("editBookForm", [
+                "errors" => $errors,
+                "book" => $book
+            ]);
+            return;
+        }
+
+        // Mise à jour
+        $book->setTitle($title);
+        $book->setAuthor($author);
+        $book->setDescription($description);
+        $book->setStatus($status);
 
         $bookManager->updateBook($book);
 
         header("Location: index.php?action=account");
         exit;
     }
+
 
     /**
      * Affiche les détails d'un livre.

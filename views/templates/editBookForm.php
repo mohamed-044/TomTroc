@@ -38,6 +38,14 @@
             <option value="false" <?= $book->getStatus() === "false" ? "selected" : "" ?>>Indisponible</option>
         </select>
 
+        <?php if (!empty($errors)) : ?>
+        <div class="errorBox">
+            <?php foreach ($errors as $error) : ?>
+                <p><?= htmlspecialchars($error) ?></p>
+            <?php endforeach; ?>
+        </div>
+        <?php endif; ?>
+
         <button type="submit" class="cta-button8">Valider</button>
     </form>
 
