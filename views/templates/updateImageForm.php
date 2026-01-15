@@ -13,7 +13,7 @@
         <h1 class="title">Mettre à jour l'image de profil</h1>
         <form class="update-image-form" action="index.php?action=updateImage" method="post" enctype="multipart/form-data">
             <label class="author" for="image">Choisir une nouvelle image de profil</label>
-            <input type="file" id="image-update" name="image" accept="image/*" required>
+            <input type="file" id="image-update" name="image" accept="image/*">
             <button type="submit" class="cta-button">Mettre à jour l'image</button>
         </form>
     </div>

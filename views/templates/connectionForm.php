@@ -14,12 +14,20 @@
         <h1 class="title">Connexion</h1>
         <form class="connection-form" action="index.php?action=connectUser" method="post">
             <label class="author" for="login">Adresse e-mail</label>
-            <input type="text" id="login" name="login" required>
+            <input type="text" id="login" name="login">
 
             <label class="author" for="password">Mot de passe</label>
-            <input type="password" id="password" name="password" required>
+            <input type="password" id="password" name="password">
 
             <button type="submit" class="cta-button">Se connecter</button>
+
+            <?php if (!empty($errors)) : ?>
+            <div class="error">
+                <?php foreach ($errors as $error) : ?>
+                    <p><?= htmlspecialchars($error) ?></p>
+                <?php endforeach; ?>
+            </div>
+            <?php endif; ?>
         </form>
         <p class="signup-text">Pas encore de compte ? <a class="signup-link" href="index.php?action=register">Inscrivez-vous</a></p>
     </div>

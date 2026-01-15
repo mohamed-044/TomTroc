@@ -29,16 +29,15 @@
 
             <label class="author" for="login">Adresse e-mail</label>
             <input type="text" id="login" name="login" class="account-input"
-                  value="<?= htmlspecialchars($user->getLogin()) ?>" required>
+                  value="<?= htmlspecialchars($user->getLogin()) ?>">
 
             <label class="author" for="password">Mot de passe</label>
             <input type="password" id="password" name="password" class="account-input"
-                  value="<?= htmlspecialchars($user->getPassword()) ?>" required>
+                  value="<?= htmlspecialchars($user->getPassword()) ?>">
 
             <label class="author" for="name">Pseudo</label>
             <input type="text" id="name" name="name" class="account-input"
-                  value="<?= htmlspecialchars($user->getName()) ?>" required>
-
+                  value="<?= htmlspecialchars($user->getName()) ?>">
 
             <button type="submit" class="cta-button3">Enregistrer</button>
             </form>
