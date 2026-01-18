@@ -77,6 +77,13 @@ class UserController
             if (empty($password)) { 
                 $errors[] = "Le mot de passe est obligatoire."; 
             }
+            
+            // On vérifie que l'utilisateur existe.
+            $userManager = new UserManager();
+            $user = $userManager->getUserByLogin($login);
+            if (!$user || !password_verify($password, $user->getPassword())) {
+                $errors[] = "Identifiants incorrects."; 
+            }
 
             // Si erreurs → on renvoie vers la vue avec les erreurs 
             if (!empty($errors)) { 
@@ -84,22 +91,6 @@ class UserController
                 $view->render("connectionForm", [ "errors" => $errors, "login" => $login ]); 
                 return; 
             }
-
-            
-
-
-            // On vérifie que l'utilisateur existe.
-            $userManager = new UserManager();
-            $user = $userManager->getUserByLogin($login);
-            if (!$user) {
-                throw new Exception("L'utilisateur demandé n'existe pas.");
-            }
-
-            // On vérifie que le mot de passe est correct.
-            if (!password_verify($password, $user->getPassword())) {
-                throw new Exception("Le mot de passe est incorrect.");
-            }
-
             // On connecte l'utilisateur.
             $_SESSION['user_id'] = $user->getId();
 
@@ -146,10 +137,10 @@ class UserController
                     $user->setImage($imageName);
                     $userManager->updateUser($user);
                 } else {
-                    throw new Exception("Erreur lors du téléchargement de l'image.");
+                    $errors[] = "Erreur lors du téléchargement de l'image.";
                 }
             } else {
-                throw new Exception("Aucune image valide n'a été téléchargée.");
+                $errors[] = "Aucune image valide n'a été téléchargée.";
             }
 
             Utils::redirect("account");
@@ -240,7 +231,7 @@ class UserController
 
             // On vérifie que les données sont valides.
             if (empty($login) || empty($password) || empty($name)) {
-                throw new Exception("Tous les champs sont obligatoires.");
+                $errors[] = "Tous les champs sont obligatoires.";
             }
 
             // On met à jour les informations de l'utilisateur.
@@ -276,7 +267,10 @@ class UserController
 
         $user = $userManager->getUserById($userId);
         if (!$user) {
-            throw new Exception("Utilisateur non trouvé.");
+            $errors[] = "Utilisateur non trouvé.";
+            $view = new View("Erreur");
+            $view->render("errorPage", ['errors' => $errors]);
+            return;
         }
 
         // Récupérer les livres de l'utilisateur

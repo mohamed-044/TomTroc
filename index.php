@@ -114,7 +114,10 @@ try {
             break;
             
         default:
-            throw new Exception("La page demandée n'existe pas.");
+            $errors[] = "La page demandée n'existe pas.";
+            $view = new View("Erreur");
+            $view->render("errorPage", ['errors' => $errors]);
+            break;
     }
 } catch (Exception $e) {
     // En cas d'erreur, on affiche la page d'erreur.

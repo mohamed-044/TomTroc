@@ -83,7 +83,17 @@ class MessageController
             $content = trim($_POST['content']);
 
             if (empty($content)) {
-                throw new Exception("Le contenu du message ne peut pas être vide.");
+                $errors[] = "Le contenu du message ne peut pas être vide.";
+            }
+
+            if (!empty($errors)) {
+                $view = new View("messages");
+                $view->render("messages", [
+                    "errors" => $errors,
+                    "receiverId" => $receiverId,
+                    "content" => $content
+                ]);
+                return;
             }
 
             $messageManager = new MessageManager();
@@ -102,7 +112,7 @@ class MessageController
         $messageManager = new MessageManager();
         $message = $messageManager->getMessageById($messageId);
         if (!$message) {
-            throw new Exception("Message non trouvé.");
+            $errors[] = "Message non trouvé.";
         }
         $view = new View("Détails du message");
         $view->render("messageDetails", ['message' => $message]);

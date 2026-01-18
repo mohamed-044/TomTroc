@@ -51,8 +51,15 @@ class BookController
         $bookManager = new BookManager();
         $book = $bookManager->getBookById($bookId);
         if (!$book) {
-            throw new Exception("Livre non trouvé.");
+            $errors[] = "Livre non trouvé.";
         }
+
+        if (!empty($errors)) {
+            $view = new View("Erreur");
+            $view->render("errorPage", ['errors' => $errors]);
+            return;
+        }
+
         $view = new View("Édition du livre");
         $view->render("editBookForm", ['book' => $book]);
     }
@@ -69,7 +76,7 @@ class BookController
         $bookManager = new BookManager();
         $book = $bookManager->getBookById($bookId);
         if (!$book) {
-            throw new Exception("Livre non trouvé.");
+            $errors[] = "Livre non trouvé.";
         }
         $bookManager->deleteBook($bookId);
         header("Location: index.php?action=books");
@@ -154,7 +161,7 @@ class BookController
         $bookManager = new BookManager();
         $book = $bookManager->getBookById($bookId);
         if (!$book) {
-            throw new Exception("Livre non trouvé.");
+            $errors[] = "Livre non trouvé.";
         }
         $view = new View("Détails du livre");
         $view->render("detailBook", ['book' => $book]);
@@ -174,7 +181,7 @@ class BookController
         $book = $bookManager->getBookById($bookId);
 
         if (!$book) {
-            throw new Exception("Livre non trouvé.");
+            $errors[] = "Livre non trouvé.";
         }
 
         $view = new View("Modifier l'image du livre");
@@ -195,7 +202,7 @@ class BookController
         $book = $bookManager->getBookById($bookId);
 
         if (!$book) {
-            throw new Exception("Livre non trouvé.");
+            $errors[] = "Livre non trouvé.";
         }
 
         if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
@@ -211,10 +218,10 @@ class BookController
                 header("Location: index.php?action=account");
                 exit;
             } else {
-                throw new Exception("Erreur lors du téléchargement de l'image.");
+                $errors[] = "Erreur lors du téléchargement de l'image.";
             }
         } else {
-            throw new Exception("Aucun fichier téléchargé ou erreur de téléchargement.");
+            $errors[] = "Aucun fichier téléchargé ou erreur de téléchargement.";
         }
     }
 }

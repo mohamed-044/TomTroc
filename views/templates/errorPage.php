@@ -12,7 +12,14 @@
 <section class="error-section">
     <h1 class="title2">Erreur</h1>
     <p><?php echo $message ?? 'Une erreur est survenue.'; ?></p>
-    <a href="/">Retour à l'accueil</a>
+    <?php if (!empty($errors)) : ?>
+    <div class="errorBox">
+        <?php foreach ($errors as $error) : ?>
+            <p><?= htmlspecialchars($error) ?></p>
+        <?php endforeach; ?>
+    </div>
+    <?php endif; ?>
+    <a class="cta-button9" href="index.php">Retour à l'accueil</a>
 </section>
 
 <?php include __DIR__ . '/footer.php'; ?>
