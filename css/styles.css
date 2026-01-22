@@ -1332,3 +1332,14 @@ a.message-sender-large {
     padding-left: 30px;
     padding-right: 30px;
 }
+
+.errorBox {
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+}
+
+.errorBox p {
+    margin: 0;
+    font-weight: bold;
+}

@@ -70,18 +70,18 @@ class UserController
             $login = Utils::request("login");
             $password = Utils::request("password");
 
-            // On vérifie que les données sont valides.
+            // On vérifie que l'utilisateur existe.
             if (empty($login)) { 
                 $errors[] = "L'adresse mail est obligatoire.";
             }
             if (empty($password)) { 
                 $errors[] = "Le mot de passe est obligatoire."; 
             }
-            
-            // On vérifie que l'utilisateur existe.
+
+            // On vérifie que les données sont valides.
             $userManager = new UserManager();
             $user = $userManager->getUserByLogin($login);
-            if (!$user || !password_verify($password, $user->getPassword())) {
+            if ((!empty($login)) && (!empty($password)) && (!$user || !password_verify($password, $user->getPassword()))) {
                 $errors[] = "Identifiants incorrects."; 
             }
 
@@ -221,44 +221,64 @@ class UserController
     public function updateAccount() : void 
     {
         try {
-            // On vérifie que l'utilisateur est connecté.
             $this->checkIfUserIsConnected();
 
-            // On récupère les données du formulaire.
             $login = Utils::request("login");
             $password = Utils::request("password");
             $name = Utils::request("name");
 
-            // On vérifie que les données sont valides.
-            if (empty($login) || empty($password) || empty($name)) {
-                $errors[] = "Tous les champs sont obligatoires.";
-            }
+            $errors = [];
 
-            // On met à jour les informations de l'utilisateur.
             $userManager = new UserManager();
             $user = $userManager->getUserById($_SESSION['user_id']);
+
+            // Validation
+            if (empty($login)) {
+                $errors[] = "L'adresse mail est obligatoire.";
+            }
+
+            if (empty($name)) {
+                $errors[] = "Le pseudo est obligatoire.";
+            }
+
+            // Si erreurs → réaffichage du formulaire
+            if (!empty($errors)) {
+
+            $userManager = new UserManager();
+            $bookManager = new BookManager();
+
+            $user = $userManager->getUserById($_SESSION['user_id']);
+            $books = $bookManager->getBooksByUserId($_SESSION['user_id']);
+
+            $view = new View("Mon compte");
+            $view->render("accountPage", [
+                "errors" => $errors,
+                "user" => $user,
+                "books" => $books
+            ]);
+            return;
+            }
+
+            // Mise à jour
             $user->setLogin($login);
-            $user->setPassword(password_hash($password, PASSWORD_DEFAULT));
+
+            // Mettre à jour le mot de passe uniquement si un nouveau est fourni
+            if (!empty($password)) {
+                $user->setPassword(password_hash($password, PASSWORD_DEFAULT));
+            }
+
             $user->setName($name);
+
             $userManager->updateUser($user);
 
-            // On redirige vers la page de compte.
             Utils::redirect("account");
+
         } catch (Exception $e) {
-            echo 'Error: ' . $e->getMessage(); // Temporary debug
+            echo 'Error: ' . $e->getMessage();
             exit;
         }
     }
 
-    public function updateImagePath(int $userId, string $imagePath) : void 
-    {
-        $userManager = new UserManager();
-        $user = $userManager->getUserById($userId);
-        if ($user) {
-            $user->setImage($imagePath);
-            $userManager->updateUser($user);
-        }
-    }
 
     public function showUserProfile(int $userId) : void 
     {

@@ -33,7 +33,7 @@
 
             <label class="author" for="password">Mot de passe</label>
             <input type="password" id="password" name="password" class="account-input"
-                  value="<?= htmlspecialchars($user->getPassword()) ?>">
+                  value="">
 
             <label class="author" for="name">Pseudo</label>
             <input type="text" id="name" name="name" class="account-input"
@@ -41,6 +41,13 @@
 
             <button type="submit" class="cta-button3">Enregistrer</button>
             </form>
+            <?php if (!empty($errors)) : ?>
+            <div class="errorBox">
+                <?php foreach ($errors as $error) : ?>
+                    <p><?= htmlspecialchars($error) ?></p>
+                <?php endforeach; ?>
+            </div>
+            <?php endif; ?>
         </div>
     </div>
 </section>
